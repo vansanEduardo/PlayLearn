@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torre de Hanói - Saiba Mais</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f3e6ff;
+            color: #4b0082;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 20px;
+            background-color: #e0ccff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #6a0dad;
+        }
+
+        p, ul {
+            margin-bottom: 20px;
+        }
+
+        .code-block {
+            background-color: #f5eaff;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        code {
+            color: #6a0dad;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        section {
+            margin-bottom: 30px;
+        }
+
+       
+        .home-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #6a0dad;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .home-button:hover,.play-button:hover {
+            background-color: #5a009b;
+        }
+
+        .play-button{
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #6a0dad;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    <a href="/" class="home-button">Home</a> 
+    <a href="/HanoiGame/index.html" class="play-button">Jogar</a> 
+    <div class="container">
+        <h1>Desenvolvendo o Jogo Torre de Hanói</h1>
+        <p>Nesta página, vamos entender como desenvolver o jogo Torre de Hanói com explicações bem simples. Se você está começando agora, não se preocupe, vamos ver tudo de forma clara e fácil!</p>
+        
+        <section>
+            <h2>O Básico do Código</h2>
+            <p>Primeiro, vamos dar uma olhada no código que vamos usar para o jogo. Cada parte será explicada com calma.</p>
+            <div class="code-block">
+                <pre>
+                    <code>
+// Função recursiva para resolver Torre de Hanói
+function torreDeHanoi(n, origem, destino, auxiliar) {
+    if (n === 1) {
+        console.log(`Mover disco 1 de ${origem} para ${destino}`);
+        return;
+    }
+    torreDeHanoi(n - 1, origem, auxiliar, destino);
+    console.log(`Mover disco ${n} de ${origem} para ${destino}`);
+    torreDeHanoi(n - 1, auxiliar, destino, origem);
+}
+
+// Chamando a função para 3 discos
+torreDeHanoi(3, 'A', 'C', 'B');
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>O que é uma Função?</h2>
+            <p>Uma função é como uma receita de bolo! Ela tem um nome, e quando você pede para fazer essa "receita", ela executa as instruções que foram escritas dentro dela.</p>
+            <p>No nosso código, a função se chama <strong>torreDeHanoi</strong>, e ela é chamada para resolver o jogo. Quando pedimos para essa função rodar, ela começa a trabalhar e fazer as movimentações necessárias.</p>
+        </section>
+
+        <section>
+            <h2>O que os Parâmetros Fazem?</h2>
+            <p>Os "parâmetros" são como os ingredientes de uma receita. Eles são informações que a função precisa para funcionar direito.</p>
+            <ul>
+                <li><strong>n</strong>: Quantos discos temos no jogo (pense como se fossem camadas de um bolo).</li>
+                <li><strong>origem</strong>: De onde os discos começam.</li>
+                <li><strong>destino</strong>: Para onde queremos levar os discos.</li>
+                <li><strong>auxiliar</strong>: Uma torre extra que ajuda a movimentar os discos.</li>
+            </ul>
+            <p>Então, quando chamamos a função <code>torreDeHanoi(3, 'A', 'C', 'B')</code>, estamos dizendo: "Mova 3 discos da torre A para a torre C, usando a torre B para ajudar".</p>
+        </section>
+
+        <section>
+            <h2>O que é Recursão?</h2>
+            <p>Recursão é uma palavra chique, mas o conceito é bem simples. Pense assim: é como uma instrução que se repete várias vezes até que o trabalho termine.</p>
+            <p>Quando a função <strong>torreDeHanoi</strong> é chamada, ela continua chamando a si mesma para resolver partes menores do problema. Como se fosse uma pessoa resolvendo um problema aos poucos, uma parte de cada vez.</p>
+        </section>
+
+        <section>
+            <h2>Entendendo o Código em Ação</h2>
+            <p>Quando você pede para o código rodar, ele vai mostrar no console os movimentos que os discos precisam fazer, assim:</p>
+            <div class="code-block">
+                <pre>
+                    <code>
+Mover disco 1 de A para C
+Mover disco 2 de A para B
+Mover disco 1 de C para B
+Mover disco 3 de A para C
+Mover disco 1 de B para A
+Mover disco 2 de B para C
+Mover disco 1 de A para C
+                    </code>
+                </pre>
+            </div>
+            <p>Esses são os movimentos necessários para mover os discos de uma torre para outra, resolvendo o jogo!</p>
+        </section>
+
+        <section>
+            <h2>Brincando com o Código</h2>
+            <p>Agora que você entendeu o básico, pode tentar mudar o número de discos. Experimente trocar o número <strong>3</strong> no código <code>torreDeHanoi(3, 'A', 'C', 'B')</code> por outro número. Isso vai mudar a quantidade de movimentos necessários para completar o jogo.</p>
+            <p>Tente também alterar as torres de destino e auxiliar para ver como o jogo se adapta.</p>
+        </section>
+    </div>
+
+   
+</body>
+</html>

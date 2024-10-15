@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Aprenda como funciona o Snake game, famoso jogo da cobrinha.</h1>
+
+      <section>
+        <h2>Introdução</h2>
+
+        <p>
+          Esse código implementa um jogo simples de Snake (jogo da cobrinha),
+          onde você controla uma cobra que se move pelo tabuleiro, coleta
+          comida, aumenta de tamanho e tenta evitar bater nas paredes ou em si
+          mesma. Vamos explicar passo a passo como ele funciona:
+        </p>
+      </section>
+
+      <section>
+        <h2>1. Elementos da Página</h2>
+        <p>
+          O código começa selecionando os elementos HTML da página que serão
+          usados para mostrar o jogo e controlar suas ações:
+        </p>
+        <img src="canvas.png" class="section-image" />
+        <p>
+          <li>
+            canvas: é a área onde o jogo será desenhado, como se fosse uma tela.
+            O método getContext("2d") obtém o contexto gráfico bidimensional,
+            que permite desenhar retângulos, linhas, etc.
+          </li>
+        </p>
+        <img src="java1.png" class="section-image" />
+        <li>score: exibe a pontuação atual do jogador.</li>
+        <li>finalScore: mostra a pontuação final após o jogo terminar.</li>
+        <li>menu: é o menu que aparece quando o jogo acaba.</li>
+        <li>buttonPlay: o botão para iniciar ou reiniciar o jogo.</li>
+      </section>
+
+      <section>
+        <h2>2. Tamanho e Posição Inicial da Cobra</h2>
+        <img src="movimentacao.png" class="section-image" />
+        <p>
+          <li>
+            size: define o tamanho dos quadrados no jogo (tanto da cobra quanto
+            da comida).
+          </li>
+          <li>initialPosition: define a posição inicial da cabeça da cobra.</li>
+          <li>
+            snake: é um array que contém as partes da cobra. No começo, a cobra
+            tem apenas uma parte, que é a sua posição inicial.
+          </li>
+        </p>
+      </section>
+
+      <section>
+        <h2>3. Funções de apoio</h2>
+
+        <p>
+          Algumas funções são usadas para ajudar com tarefas comuns no jogo:
+          <li>
+            incrementScore: aumenta a pontuação quando a cobra come a comida.
+          </li>
+          <li>
+            randomNumber e randomPosition: geram números aleatórios. A função
+            randomPosition cria uma posição aleatória para a comida dentro dos
+            limites do tabuleiro.
+          </li>
+          <li>randomColor: gera uma cor aleatória para a comida</li>
+        </p>
+      </section>
+
+      <section>
+        <h2>4. Comida</h2>
+        <img src="comida.png" class="section-image" />
+        <p>
+          A comida tem uma posição aleatória no tabuleiro e uma cor aleatória.
+        </p>
+      </section>
+
+      <section>
+        <h2>5. Desenho no canvas</h2>
+
+        <p>
+          <li>
+            drawFood: desenha a comida na tela usando a cor e posição
+            aleatórias.
+          </li>
+          <li>
+            drawSnake: desenha a cobra, representada por uma série de
+            retângulos. A cor da cabeça da cobra é branca, e o resto é cinza.
+          </li>
+        </p>
+      </section>
+
+      <section>
+        <h2>6. Movimentação da cobra</h2>
+        <p>
+          A cobra se move adicionando um novo quadrado à frente da sua cabeça,
+          baseado na direção escolhida
+        </p>
+        <img src="direita.png" class="section-image" />
+        <li>
+          vai se mover para a direita(right) quando apertar a setinha da
+          direita.
+        </li>
+        <img src="left.png" class="section-image" />
+        <li>
+          vai se mover para a esquerda(left) quando apertar a setinha da
+          esquerda.
+        </li>
+        <img src="down.png" class="section-image" />
+        <li>vai se mover para baixo(down) quando apertar a setinha de baixo</li>
+        <img src="up.png" class="section-image" />
+        <li>vai se mover para cima(up) quando apertar a setinha de cima</li>
+        <img src="pushshift.png" class="section-image" />
+        <li>
+          A função snake.push adiciona uma nova posição no final da cobra, e
+          snake.shift remove a última parte para manter o tamanho constante (a
+          menos que tenha comido comida).
+        </li>
+        <p></p>
+      </section>
+
+      <section>
+        <h2>7. Desenhando o grid</h2>
+        <img src="grid.png" class="section-image" />
+        <li>
+          Essa função desenha um grid (grade) no fundo do canvas para facilitar
+          a visualização da movimentação da cobra e da comida.
+        </li>
+      </section>
+      <section>
+        <h2>8. Verificar se a cobra comeu a comida</h2>
+        <img src="comer.png" class="section-image" />
+        <li>
+          A função verifica se a cabeça da cobra está na mesma posição da
+          comida. Se sim, a pontuação aumenta, a cobra cresce, e a comida é
+          reposicionada aleatoriamente.
+        </li>
+      </section>
+      <section>
+        <h2>9. Verificar colisões</h2>
+        <img src="colisao.png" class="section-image" />
+        <li>
+          Verifica se a cobra bateu nas paredes ou em si mesma. Se acontecer, o
+          jogo acaba.
+        </li>
+      </section>
+      <section>
+        <h2>10. Fim de jogo</h2>
+        <img src="fim.png" class="section-image" />
+        <li>
+          Quando o jogo acaba, o menu aparece, o placar final é exibido, e a
+          tela do jogo fica desfocada.
+        </li>
+      </section>
+      <section>
+        <h2>11. Loop do Jogo</h2>
+        <img src="loop.png" class="section-image" />
+        <li>
+          A cada ciclo (ou "frame") do jogo, a tela é limpa e a cobra, comida e
+          grid são redesenhados. A cobra se move, verifica se comeu comida e se
+          colidiu com algo. O ciclo se repete a cada 300 milissegundos.
+        </li>
+      </section>
+      <section>
+        <h2>12. Controle e Reinicio</h2>
+        <img src="bora.png" class="section-image" />
+        <li>
+          As setas direcionais controlam a direção da cobra, mas ela não pode
+          mudar para a direção oposta imediatamente. javascript
+        </li>
+        <img src="bill.png" class="section-image" />
+        <li>
+          Quando o botão de "jogar" é pressionado, o placar é resetado, o menu
+          desaparece, e a cobra volta à posição inicial.
+        </li>
+      </section>
+
+      <a href="/" class="home-button">Home</a>
+      <a href="/SnakeGame/index.html" class="play-button">Jogar</a>
+    </div>
+  </body>
+</html>
