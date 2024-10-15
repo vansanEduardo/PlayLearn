@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <title>GhostAtack</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="js/script.js" defer></script>
+  </head>
+  <body>
+    <!-- Pagina Inicial -->
+    <div class="container-init">
+      <div class="banner">
+        <!-- <img src="./img/Banner.png" alt="" /> -->
+      </div>
+
+      <div class="start-game">
+        <div class="button-game">
+          <button id="start">Jogar</button>
+        </div>
+        <div class="form-control">
+          <p>Selecione o nivel abaixo</p>
+          <select id="level">
+            <option value="1500">Fácil</option>
+            <option value="1000">Médio</option>
+            <option value="750">Difícil</option>
+          </select>
+        </div>
+
+      <div class="button-game">
+        <a href="/"><button >Home</button></a>
+      </div>
+       
+      </div>
+    </div>
+    <!-- Fim Pagina Inicial -->
+
+    <div class="container-game hide">
+      <div class="progress-bar">
+        <div class="lifes">
+          <img id="heart1" src="img/heartfull.png" alt="coração cheio" />
+          <img id="heart2" src="img/heartfull.png" alt="coração cheio" />
+          <img id="heart3" src="img/heartfull.png" alt="coração cheio" />
+        </div>
+        <div class="time">
+          <h1>Tempo Restante: <span id="time">10</span></h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-gameover hide">
+      <div class="btn-reset">
+        <button id="reset">Reiniciar</button>
+      </div>
+    </div>
+
+    <div class="container-win hide">
+      <div class="btn-reset">
+        <button id="play-again">Jogar Novamente</button>
+      </div>
+    </div>
+  </body>
+</html>

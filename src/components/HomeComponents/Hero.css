@@ -1,0 +1,225 @@
+.container-hero {
+  height: 800px;
+  width: 1100px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.hero {
+  padding: 1rem;
+  width: 1100px;
+  height: 350px;
+  background-image: url("../../assets/hero1.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.hero h1 {
+  margin-top: 3rem;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  animation: typing 3s steps(30, end), 0.75s;
+}
+
+.hero p {
+  margin: 5rem auto;
+  width: 700px;
+  text-align: center;
+  animation: opacity 3s;
+  color: #fff;
+}
+
+.panel {
+  height: 350px;
+  display: flex;
+  gap: 10px;
+  
+}
+
+.img-game,
+.img-retro,
+.img-championship {
+  width: 360px;
+  height: 300px;
+  border-radius: 24px;
+  transition: ease 1s;
+  background-color: black;
+  background-position: center;
+  background-size: cover;
+  
+}
+
+.img-game {
+  margin-top: 1rem;
+  background-image: url("../../assets/retro.jpg");
+
+}
+
+.img-retro {
+  background-image: url("../../assets/comingsoon.jpg");
+
+}
+
+.img-championship {
+  margin-top: 1rem;
+  background-image: url("../../assets/championship.png");
+}
+
+.panel :hover {
+  transform: translateY(-10px);
+  
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+    border-right: 3px solid ;
+  }
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1300px){
+  .container-hero{
+    height: 100%;
+  }
+
+  .hero{
+    width: 900px;
+    margin: 2rem auto;
+  }
+  .hero h1{
+    font-size: 20px;
+  }
+  .hero p{
+    font-size: 16px;
+  }
+  .panel{
+    display: flex;
+    justify-content: center;
+  }
+  .img-game,
+  .img-retro,
+  .img-championship {
+    width: 300px;
+    height: 300px;
+   
+  }
+}
+
+
+@media (max-width: 1200px){
+  .hero{
+    width: 700px;
+    height: 300px;
+    
+  }
+  .hero h1{
+    margin-top: 6rem;
+  }
+  .img-game,
+  .img-retro,
+  .img-championship {
+    width: 300px;
+    height: 300px;
+    
+  }
+ .container-hero{
+  width: 700px;
+ }
+ .hero p{
+  display: none;
+ }
+}
+@media (max-width: 850px){
+  .hero{
+    width: 500px;
+  }
+ .panel{
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 800px;
+ }
+ .img-game,
+ .img-retro,
+ .img-championship {
+   width: 300px;
+   height: 100%;
+   margin-bottom: 1rem;
+ }
+
+}
+
+@media (max-width: 750px){
+  
+  .container-hero{
+    width: 450px;
+  }
+
+ .hero{
+  width: 450px;
+  height: 200px;
+ }
+ .hero h1{
+  font-size: 0.8rem;
+ }
+}
+
+@media (max-width: 600px){
+  
+  .container-hero{
+    width: 350px;
+  }
+
+ .hero{
+  width: 350px;
+  height: 250px;
+ }
+ .hero h1{
+  font-size: 0.8rem;
+ }
+}
+
+ 
+@media (max-width: 440px){
+  .container-hero{
+    width: 350px;
+  }
+  .img-game,
+ .img-retro,
+ .img-championship {
+   width: 300px;
+   height: 200px;
+   
+ }
+ .hero{
+  width: 300px;
+  height: 250px;
+ }
+ .hero h1{
+  font-size: 0.7rem;
+ }
+ }
+
+ 

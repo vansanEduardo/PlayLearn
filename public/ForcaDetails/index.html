@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explicação do Jogo da Forca</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="/" class="home-button">Home</a> 
+    <a href="/ForcaGame/forca.html" class="play-button">Jogar</a> 
+
+    <div class="container">
+        <h1>Desenvolvendo o Jogo da Forca</h1>
+        <p>Vamos explorar o código do jogo da forca e entender como ele funciona. Este guia é ótimo para quem está aprendendo a programar!</p>
+        
+        <!-- Seção 1: Iniciando o Jogo -->
+        <section>
+            <h2>1. Iniciando o Jogo</h2> <br>
+            <p>O jogo começa com algumas variáveis que definem o estado inicial. Aqui estão as principais:</p>
+            <div class="code-block">
+                <pre>
+                    <code>
+let jogarNovamente = true;
+let tentativas = 6;
+let listaDinamica = [];
+let palavraSecretaCategoria;
+let palavraSecretaSorteada;
+let palavras = [];
+let jogoAutomatico = true;
+                    </code>
+                </pre>
+            </div> <br>
+            <h3>1.1 Variáveis do Jogo</h3>
+            <br>
+            <p>
+                Variáveis são como "caixinhas" que armazenam informações para que o programa possa usá-las depois. Pense em uma variável como um bloco de notas onde você anota algo importante para lembrar mais tarde.
+            </p>
+            <p>
+                - <strong>`tentativas`:</strong> Define quantos erros o jogador pode cometer antes de perder. Começa em 6, o número de partes da forca.
+            </p>
+            <p>
+                - <strong>`palavraSecretaSorteada`:</strong> Guarda a palavra que o jogador precisa adivinhar.
+            </p>
+            <p>
+                - <strong>`jogoAutomatico`:</strong> Controla se o jogo escolhe as palavras automaticamente ou se o jogador pode adicionar palavras manualmente.
+            </p>
+        </section>
+
+        <!-- Seção 2: Sorteio e Montagem da Palavra -->
+        <section>
+            <h2>2. Sorteio e Montagem da Palavra</h2> <br>
+            <p>Para começar, o jogo sorteia uma palavra aleatória e a exibe na tela com espaços em branco:</p>
+            <div class="code-block">
+                <pre>
+                    <code>
+function criarPalavraSecreta() {
+    const indexPalavra = parseInt(Math.random() * palavras.length);
+    palavraSecretaSorteada = palavras[indexPalavra].nome;
+    palavraSecretaCategoria = palavras[indexPalavra].categoria;
+}
+
+function montarPalavraNaTela() {
+    const categoria = document.getElementById("categoria");
+    categoria.innerHTML = palavraSecretaCategoria;
+
+    const palavraTela = document.getElementById("palavra-secreta");
+    palavraTela.innerHTML = "";
+    
+    for(let i = 0; i < palavraSecretaSorteada.length; i++) {  
+        listaDinamica[i] = palavraSecretaSorteada[i] === " " ? " " : "&nbsp;";
+        palavraTela.innerHTML += `<div class='letras'>${listaDinamica[i]}</div>`;
+    }
+}
+                    </code>
+                </pre>
+            </div> <br>
+            <h3>2.1 Sorteio e Exibição da Palavra</h3> <br>
+            <p>
+                Funções são como pequenas receitas que o programa segue para fazer algo específico. Quando você chama uma função, o programa "lê" o que está dentro dela e executa aquilo que está escrito.
+            </p>
+            <p>
+                - <strong>`criarPalavraSecreta()`:</strong> Esta função sorteia uma palavra e sua categoria da lista. É como se você puxasse um papel aleatório de uma cesta cheia de opções.
+            </p>
+            <p>
+                - <strong>`montarPalavraNaTela()`:</strong> Mostra a palavra com espaços em branco para cada letra, usando `<div>`s para construir a palavra visualmente. O espaço em branco (`&nbsp;`) mostra onde ainda não há letras acertadas.
+            </p>
+        </section>
+
+        <!-- Seção 3: Verificação e Estilo das Letras -->
+        <section>
+            <h2>3. Verificação e Estilo das Letras</h2> <br>
+            <p>Ao escolher uma letra, verificamos se ela está na palavra e ajustamos o estilo das teclas para mostrar o que já foi tentado:</p>
+            <div class="code-block">
+                <pre>
+                    <code>
+function verificaLetraEscolhida(letra) {
+    document.getElementById("tecla-" + letra).disabled = true;
+    if(tentativas > 0) {
+        mudarStyleLetra("tecla-" + letra, false);
+        comparalistas(letra);
+        montarPalavraNaTela();
+    }    
+}
+
+function mudarStyleLetra(tecla, condicao) {
+    document.getElementById(tecla).style.background = condicao ? "#008000" : "#C71585";
+    document.getElementById(tecla).style.color = "#ffffff";
+}
+                    </code>
+                </pre>
+            </div> <br>
+            <h3>3.1 Eventos e Estilo</h3> <br>
+            <p>
+                - <strong>Eventos:</strong> Um evento é algo que acontece na página, como um clique do mouse. A função `verificaLetraEscolhida` é chamada sempre que o jogador clica em uma letra, verificando se essa letra está na palavra.
+            </p>
+            <p>
+                - <strong>Mudança de Estilo:</strong> A função `mudarStyleLetra` muda a cor da tecla clicada para verde (acerto) ou vermelho (erro). Isso ajuda o jogador a lembrar quais letras já foram tentadas e se estavam certas ou erradas.
+            </p>
+        </section>
+
+        <!-- Seção 4: Feedback e Controle do Jogo -->
+        <section> 
+            <h2>4. Feedback e Controle do Jogo</h2> <br>
+            <p>Essas funções definem o fluxo do jogo, mostrando ao jogador as imagens da forca e mensagens de vitória ou derrota:</p>
+            <div class="code-block">
+                <pre>
+                    <code>
+function comparalistas(letra) {
+    const pos = palavraSecretaSorteada.indexOf(letra);
+    if(pos < 0) {
+        tentativas--;
+        carregaImagemForca();
+        if(tentativas === 0) {
+            abreModal("OPS!", "Não foi dessa vez ... A palavra secreta era <br>" + palavraSecretaSorteada);
+        }
+    } else {
+        for(let i = 0; i < palavraSecretaSorteada.length; i++) {
+            if(palavraSecretaSorteada[i] === letra) {
+                listaDinamica[i] = letra;
+            }
+        }
+    }
+}
+
+function carregaImagemForca() {
+    const imagens = ["forca.png", "forca01.png", "forca02.png", "forca03.png", "forca04.png", "forca05.png", "forca06.png"];
+    document.getElementById("imagem").style.background = `url('./img/${imagens[6 - tentativas]}')`;
+}
+
+function abreModal(titulo, mensagem) {
+    document.getElementById("exampleModalLabel").innerText = titulo;
+    document.getElementById("modalBody").innerHTML = mensagem;
+    $("#myModal").modal({ show: true });
+}
+                    </code>
+                </pre>
+            </div> <br>
+            <h3>4.1 Feedback Visual e Mensagens</h3>
+            <p><br>
+                - <strong>Verificação de Vitória:</strong> A função `comparalistas` verifica se a letra está na palavra e diminui as tentativas quando há erro. Ela também revela as letras corretas.
+            </p>
+            <p>
+                - <strong>Imagens da Forca:</strong> `carregaImagemForca` altera a imagem da forca conforme as tentativas se esgotam. Cada erro carrega uma parte da imagem, indicando visualmente quantas tentativas restam.
+            </p>
+            <p>
+                - <strong>Modais de Mensagem:</strong> A função `abreModal` exibe uma mensagem indicando se o jogador venceu ou perdeu. Esse modal chama a atenção do jogador e mostra o resultado da partida.
+            </p>
+        </section>
+    </div>
+</body>
+</html>

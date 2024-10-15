@@ -1,0 +1,23 @@
+.container-games{
+    margin: 5rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.title-games{
+    text-align: center;
+}
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+}
+
+@media (max-width: 375px){
+    .container-games{
+      margin-left: 3rem;
+    }
+   
+  }

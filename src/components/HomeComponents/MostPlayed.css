@@ -1,0 +1,63 @@
+.container-mostplayed {
+  width: 1100px;
+  height: 500px;
+  margin: 5rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6rem;
+}
+
+.cards-mostplayed {
+  display: flex;
+  gap: 4rem;
+}
+
+.card-contrast {
+  margin-top: -30px;
+}
+
+
+
+@media (max-width: 1250px) {
+  .cards-mostplayed {
+    gap: 1rem;
+  }
+  .container-mostplayed {
+    width: 600px;
+  }
+}
+
+@media (max-width: 850px) {
+  .cards-mostplayed {
+    flex-direction: column;
+  }
+  .container-mostplayed {
+    height: 800px;
+  }
+  .card-contrast {
+    margin: 0;
+  }
+}
+
+@media (max-width: 750px) {
+  .container-mostplayed {
+    width: 450px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container-mostplayed {
+    width: 300px;
+  }
+  .btn-secondary button {
+    width: 200px;
+  }
+}
+@media (max-width: 375px) {
+  .container-mostplayed {
+    width: 300px;
+    margin-left: 1.5rem;
+  }
+}

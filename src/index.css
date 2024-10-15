@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;800&family=Press+Start+2P&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Press start 2p";
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: #212123;
+}
+body.no-scroll {
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+span {
+  color: #8a56c6;
+}
+
+h1,
+h2,
+h3 {
+  color: #fff;
+}
+
+button {
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.btn-play button {
+  width: 150px;
+  height: 50px;
+  background: linear-gradient(#8a56c6, #5645cc);
+}
+
+.btn-play button:hover {
+  background: linear-gradient(#8a56c6, #371de2);
+  transform: scale(1.05);
+}
+
+.btn-play button:active {
+  transform: scale(0.9);
+}
+
+.btn-secondary button {
+  width: 300px;
+  height: 60px;
+  background-color: #5544cc;
+}
+
+.btn-secondary button:hover {
+  background-color: #fff;
+  color: #5544cc;
+  transition: all 0.2s ease-in-out;
+  border: 2px solid #5544cc;
+  transform: scale(1.05);
+}
+
+.btn-secondary button:active {
+  transform: scale(1);
+}
+
+ul li {
+  list-style: none;
+}
+
+
+@media (max-width: 600px) {
+  .btn-play button {
+    width: 80px;
+    font-size: 0.6rem;
+  }
+  .btn-secondary button{
+    width: 200px;
+  }
+}
