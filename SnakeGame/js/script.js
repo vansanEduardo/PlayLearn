@@ -1,7 +1,7 @@
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 const resizeCanvas = () => {
-  const minDimension = Math.min(window.innerWidth, window.innerHeight) * 0.85; // 85% da menor dimensão da tela
+  const minDimension = Math.min(window.innerHeight *0.75, window.innerWidth * 0.90) ; // 85% da menor dimensão da tela
   canvas.width = canvas.height = minDimension;
 };
 
