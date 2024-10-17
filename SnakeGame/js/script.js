@@ -1,17 +1,8 @@
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 const resizeCanvas = () => {
-  const aspectRatio = 16 / 9; // Proporção 16:9
   const minDimension = Math.min(window.innerWidth, window.innerHeight) * 0.85; // 85% da menor dimensão da tela
-
-  // Calcular a largura e altura com base na proporção
-  if (window.innerWidth / window.innerHeight > aspectRatio) {
-    canvas.width = minDimension;
-    canvas.height = minDimension / aspectRatio;
-  } else {
-    canvas.height = minDimension;
-    canvas.width = minDimension * aspectRatio;
-  }
+  canvas.width = canvas.height = minDimension;
 };
 
 // Chama a função ao carregar a página e redimensiona ao mudar o tamanho da janela
