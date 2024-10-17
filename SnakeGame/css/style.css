@@ -22,18 +22,19 @@ body {
 
 canvas {
     background-color: #111;
+    border: 1px solid #000;
 }
 
 .score {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
 }
 
 .score--value {
     font-weight: 700;
-    font-size: 4.5rem;
+    font-size: 3.5rem;
     display: block;
     margin-top: -10px;
 }
@@ -89,3 +90,29 @@ canvas {
  a{
     text-decoration: none;
 }
+.controls {
+    display: none;
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .controls button {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .arrow-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

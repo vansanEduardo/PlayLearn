@@ -1,5 +1,13 @@
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
+const resizeCanvas = () => {
+  const minDimension = Math.min(window.innerWidth, window.innerHeight) * 0.85; // 85% da menor dimensão da tela
+  canvas.width = canvas.height = minDimension;
+};
+
+// Chama a função ao carregar a página e redimensiona ao mudar o tamanho da janela
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas(); // Redimensiona inicialmente
 
 const score = document.querySelector(".score--value");
 const finalScore = document.querySelector(".final-score > span");
@@ -14,11 +22,12 @@ audio.addEventListener("canplaythrough", () => {
 audio.addEventListener("error", (e) => {
   console.error("Erro ao carregar áudio:", e);
 });
-const size = 30;
 
+const size = 30;
 const initialPosition = { x: 270, y: 240 };
 
 let snake = [initialPosition];
+let direction, loopId;
 
 const incrementScore = () => {
   score.innerText = +score.innerText + 10;
@@ -30,7 +39,7 @@ const randomNumber = (min, max) => {
 
 const randomPosition = () => {
   const number = randomNumber(0, canvas.width - size);
-  return Math.round(number / 30) * 30;
+  return Math.round(number / size) * size;
 };
 
 const randomColor = () => {
@@ -47,11 +56,8 @@ const food = {
   color: randomColor(),
 };
 
-let direction, loopId;
-
 const drawFood = () => {
   const { x, y, color } = food;
-
   ctx.shadowColor = color;
   ctx.shadowBlur = 6;
   ctx.fillStyle = color;
@@ -66,7 +72,6 @@ const drawSnake = () => {
     if (index == snake.length - 1) {
       ctx.fillStyle = "green";
     }
-
     ctx.fillRect(position.x, position.y, size, size);
   });
 };
@@ -76,19 +81,16 @@ const moveSnake = () => {
 
   const head = snake[snake.length - 1];
 
-  if (direction == "right") {
+  if (direction === "right") {
     snake.push({ x: head.x + size, y: head.y });
   }
-
-  if (direction == "left") {
+  if (direction === "left") {
     snake.push({ x: head.x - size, y: head.y });
   }
-
-  if (direction == "down") {
+  if (direction === "down") {
     snake.push({ x: head.x, y: head.y + size });
   }
-
-  if (direction == "up") {
+  if (direction === "up") {
     snake.push({ x: head.x, y: head.y - size });
   }
 
@@ -102,12 +104,12 @@ const drawGrid = () => {
   for (let i = 30; i < canvas.width; i += 30) {
     ctx.beginPath();
     ctx.lineTo(i, 0);
-    ctx.lineTo(i, 600);
+    ctx.lineTo(i, canvas.height);
     ctx.stroke();
 
     ctx.beginPath();
     ctx.lineTo(0, i);
-    ctx.lineTo(600, i);
+    ctx.lineTo(canvas.width, i);
     ctx.stroke();
   }
 };
@@ -115,7 +117,7 @@ const drawGrid = () => {
 const chackEat = () => {
   const head = snake[snake.length - 1];
 
-  if (head.x == food.x && head.y == food.y) {
+  if (head.x === food.x && head.y === food.y) {
     incrementScore();
     audio.play().catch((e) => {
       console.error("Erro ao tentar reproduzir áudio:", e);
@@ -164,7 +166,7 @@ const gameOver = () => {
 const gameLoop = () => {
   clearInterval(loopId);
 
-  ctx.clearRect(0, 0, 600, 600);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawGrid();
   drawFood();
   moveSnake();
@@ -180,19 +182,16 @@ const gameLoop = () => {
 gameLoop();
 
 document.addEventListener("keydown", ({ key }) => {
-  if (key == "ArrowRight" && direction != "left") {
+  if (key === "ArrowRight" && direction !== "left") {
     direction = "right";
   }
-
-  if (key == "ArrowLeft" && direction != "right") {
+  if (key === "ArrowLeft" && direction !== "right") {
     direction = "left";
   }
-
-  if (key == "ArrowDown" && direction != "up") {
+  if (key === "ArrowDown" && direction !== "up") {
     direction = "down";
   }
-
-  if (key == "ArrowUp" && direction != "down") {
+  if (key === "ArrowUp" && direction !== "down") {
     direction = "up";
   }
 });
@@ -203,4 +202,21 @@ buttonPlay.addEventListener("click", () => {
   canvas.style.filter = "none";
 
   snake = [initialPosition];
+});
+
+// Mobile controls
+document.querySelector(".arrow.up").addEventListener("click", () => {
+  if (direction !== "down") direction = "up";
+});
+
+document.querySelector(".arrow.down").addEventListener("click", () => {
+  if (direction !== "up") direction = "down";
+});
+
+document.querySelector(".arrow.left").addEventListener("click", () => {
+  if (direction !== "right") direction = "left";
+});
+
+document.querySelector(".arrow.right").addEventListener("click", () => {
+  if (direction !== "left") direction = "right";
 });
