@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Aprenda como funciona o Ghost Atack e a sua lógica por trás</h1>
+        
+        <section>
+            <h2>Resumo da Lógica do Jogo</h2>
+            
+            <p>
+            <li>Início do Jogo: O jogador escolhe um nível e clica em "iniciar", iniciando o jogo.</li>
+            <li>Exibição de Fantasmas: Fantasmas aparecem em posições aleatórias na tela, e o jogador deve clicar neles para ganhar pontos.</li>
+            <li>Vidas: O jogador começa com 3 vidas. Se um fantasma não for clicado antes de desaparecer, o jogador perde uma vida.
+            <li>Contagem Regressiva: O jogador tem 20 segundos para clicar nos fantasmas.</li>
+            <li>Fim do Jogo: O jogo termina se o tempo acabar ou se o jogador perder todas as vidas. O jogador pode então optar por reiniciar o jogo.</li>
+            </p>
+        </section>
+
+        <section>
+            <h2>1. Seleção de Elementos HTML:</h2>
+            <img src="selecaoHTML.png" class="section-image">
+            <p> <li>O código começa selecionando elementos da página HTML que têm IDs ou classes específicas. Esses elementos são usados para iniciar o jogo, mostrar as telas do jogo, e manipular o tempo e as vidas.</li></p>
+            
+           
+        </section>
+
+        <section>
+            <h2>2. Inicialização do Jogo:</h2>
+            <img src="inicializacao.png" class="section-image">
+            <p> Aqui, o código aguarda um clique no botão de "início" (btnStart). Quando o botão é clicado:
+                <li>Ele define o nível de dificuldade com base no valor selecionado pelo jogador.</li>
+                <li>Ele exibe corações cheios (representando vidas) na tela.</li>
+                <li>A página inicial é escondida e a página do jogo é exibida.</li>
+                <li>As funções startInteval(levelGame) e startTime() são chamadas para começar o jogo.</li>
+
+            </p>
+            
+           
+        </section>
+
+        <section>
+            <h2>3. Variáveis e Controles do Jogo:</h2>
+            <img src="variaveis.png"class="section-image">
+            <p> O código declara variáveis para largura e altura da janela, vidas do jogador (iniciando em 1), o intervalo do jogo, e o tempo disponível para o jogo (20 segundos). O tempo é exibido na tela.
+            </p>
+           
+        </section>
+
+        <section>
+            <h2>4. Funções para Tamanho da Página e Posições Aleatórias:</h2>
+            <img src="Tamanho.png"class="section-image">
+            <p>
+                <li>sizePage: Atualiza a largura e altura da janela sempre que a janela é redimensionada.</li>
+                <li>randomSize: Retorna uma classe aleatória para os fantasmas (diferentes estilos).</li>
+                <li>randomPosition: Gera uma posição aleatória para os fantasmas aparecerem na tela.</li>
+            </p>
+        </section>
+
+        <section>
+            <h2>5. Lógica do Fantasma:</h2>
+            <img src="logica.png"class="section-image">
+           
+            <p>
+                Se um fantasma já estiver presente, ele é removido. Se o jogador já tiver perdido 3 vidas, o jogo termina, e a tela de "Game Over" é mostrada. Se ainda houver vidas, uma vida é removida.
+            </p>
+        </section>
+
+        <section>
+            <h2>6. Interações e Contagem do Tempo:</h2>
+            
+            <img src="interacoes.png" class="section-image">
+           <p>O jogador pode clicar no fantasma para removê-lo, e a função startTime começa uma contagem regressiva de 20 segundos, atualizando o tempo na tela a cada segundo. Quando o tempo chega a 0, o jogo termina.
+        </p> 
+        </section>
+
+        <section>
+            <h2>7. Parar o Jogo:</h2>
+            <img src="parar.png" class="section-image">
+            <p>A função stopGame verifica se o tempo acabou. Se sim, ela para os intervalos do jogo e mostra a tela de vitória.</p>
+        </section>
+        <section>
+            <h2>8.Reiniciar o Jogo:</h2>
+            <img src="reiniciar.png" class="section-image">
+            <p>Os botões de reiniciar e jogar novamente recarregam a página, reiniciando o jogo.</p>
+        </section>
+        
+        <a href="https://vansaneduardo.github.io/PlayLearn" class="home-button">HOME</a>
+        <a href="https://vansaneduardo.github.io/PlayLearn/GhostAtack/index.html" class="play-button">Jogar</a>
+    </div>
+</body>
+</html>
