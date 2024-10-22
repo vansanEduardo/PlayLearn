@@ -5,7 +5,7 @@ let isGameOver = false; // Variável para controlar o estado do jogo
 
 const resizeCanvas = () => {
   // Ajuste refinado para proporção em dispositivos móveis e desktop
-  const minDimension = Math.min(window.innerHeight * 0.7, window.innerWidth * 0.90); 
+  const minDimension = Math.min(window.innerHeight * 0.8, window.innerWidth * 0.9); 
   canvas.width = canvas.height = minDimension;
 };
 
