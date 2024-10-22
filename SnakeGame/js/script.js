@@ -1,7 +1,11 @@
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
+
+let isGameOver = false; // Variável para controlar o estado do jogo
+
 const resizeCanvas = () => {
-  const minDimension = Math.min(window.innerHeight *0.75, window.innerWidth * 0.90) ; // 85% da menor dimensão da tela
+  // Ajuste refinado para proporção em dispositivos móveis e desktop
+  const minDimension = Math.min(window.innerHeight * 0.75, window.innerWidth * 0.9); 
   canvas.width = canvas.height = minDimension;
 };
 
@@ -77,7 +81,7 @@ const drawSnake = () => {
 };
 
 const moveSnake = () => {
-  if (!direction) return;
+  if (!direction || isGameOver) return; // Impede a movimentação após o game over
 
   const head = snake[snake.length - 1];
 
@@ -157,6 +161,7 @@ const checkCollision = () => {
 
 const gameOver = () => {
   direction = undefined;
+  isGameOver = true; // Indica que o jogo terminou
 
   menu.style.display = "flex";
   finalScore.innerText = score.innerText;
@@ -182,6 +187,8 @@ const gameLoop = () => {
 gameLoop();
 
 document.addEventListener("keydown", ({ key }) => {
+  if (isGameOver) return; // Impede ações após game over
+
   if (key === "ArrowRight" && direction !== "left") {
     direction = "right";
   }
@@ -200,23 +207,27 @@ buttonPlay.addEventListener("click", () => {
   score.innerText = "00";
   menu.style.display = "none";
   canvas.style.filter = "none";
-
+  isGameOver = false; // Reinicia o jogo
   snake = [initialPosition];
 });
 
 // Mobile controls
 document.querySelector(".arrow.up").addEventListener("click", () => {
+  if (isGameOver) return; // Bloqueia ações no game over
   if (direction !== "down") direction = "up";
 });
 
 document.querySelector(".arrow.down").addEventListener("click", () => {
+  if (isGameOver) return;
   if (direction !== "up") direction = "down";
 });
 
 document.querySelector(".arrow.left").addEventListener("click", () => {
+  if (isGameOver) return;
   if (direction !== "right") direction = "left";
 });
 
 document.querySelector(".arrow.right").addEventListener("click", () => {
+  if (isGameOver) return;
   if (direction !== "left") direction = "right";
 });
