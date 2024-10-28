@@ -33,7 +33,7 @@ let gameInteval;
 let interval;
 let time = 20;
 
-spanTime.innerHTML = time
+spanTime.innerHTML = time;
 
 function sizePage() {
   width = window.innerWidth;
@@ -94,9 +94,20 @@ const randomPosition = () => {
 
 const stopGame = () => {
   if (time === 0) {
-    stopInterval()
+    stopInterval();
     gamePage.classList.add("hide");
     winPage.classList.remove("hide");
+    let reward;
+
+    if (levelGame == 1500) {
+      reward = "bronze";
+    } else if (levelGame == 1000) {
+      reward = "prata";
+    } else {
+      reward = "ouro";
+    }
+
+    adicionarConquista("Ghost", `${reward}`);
   }
 };
 
@@ -130,3 +141,19 @@ btnReset.addEventListener("click", () => {
 btnAgain.addEventListener("click", () => {
   location.reload();
 });
+
+function adicionarConquista(jogoId, conquistaId) {
+  // 1. Carregar conquistas existentes do localStorage ou iniciar um novo objeto
+  const conquistas = JSON.parse(localStorage.getItem('conquistas')) || {};
+  
+  // 2. Verificar se o jogo existe no objeto de conquistas; se não, criar um novo array
+  if (!conquistas[jogoId]) conquistas[jogoId] = [];
+  
+  // 3. Adicionar a conquista ao array do jogo, se ainda não estiver lá
+  if (!conquistas[jogoId].includes(conquistaId)) {
+      conquistas[jogoId].push(conquistaId);
+      
+      // 4. Salvar as conquistas atualizadas de volta no localStorage
+      localStorage.setItem('conquistas', JSON.stringify(conquistas));
+  }
+}

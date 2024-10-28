@@ -1,18 +1,6 @@
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
-let isGameOver = false; // Variável para controlar o estado do jogo
-
-const resizeCanvas = () => {
-  // Ajuste refinado para proporção em dispositivos móveis e desktop
-  const minDimension = Math.min(window.innerHeight * 0.8, window.innerWidth * 0.9); 
-  canvas.width = canvas.height = minDimension;
-};
-
-// Chama a função ao carregar a página e redimensiona ao mudar o tamanho da janela
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas(); // Redimensiona inicialmente
-
 const score = document.querySelector(".score--value");
 const finalScore = document.querySelector(".final-score > span");
 const menu = document.querySelector(".menu-screen");
@@ -26,12 +14,11 @@ audio.addEventListener("canplaythrough", () => {
 audio.addEventListener("error", (e) => {
   console.error("Erro ao carregar áudio:", e);
 });
-
 const size = 30;
+
 const initialPosition = { x: 270, y: 240 };
 
 let snake = [initialPosition];
-let direction, loopId;
 
 const incrementScore = () => {
   score.innerText = +score.innerText + 10;
@@ -43,7 +30,7 @@ const randomNumber = (min, max) => {
 
 const randomPosition = () => {
   const number = randomNumber(0, canvas.width - size);
-  return Math.round(number / size) * size;
+  return Math.round(number / 30) * 30;
 };
 
 const randomColor = () => {
@@ -60,8 +47,11 @@ const food = {
   color: randomColor(),
 };
 
+let direction, loopId;
+
 const drawFood = () => {
   const { x, y, color } = food;
+
   ctx.shadowColor = color;
   ctx.shadowBlur = 6;
   ctx.fillStyle = color;
@@ -76,25 +66,29 @@ const drawSnake = () => {
     if (index == snake.length - 1) {
       ctx.fillStyle = "green";
     }
+
     ctx.fillRect(position.x, position.y, size, size);
   });
 };
 
 const moveSnake = () => {
-  if (!direction || isGameOver) return; // Impede a movimentação após o game over
+  if (!direction) return;
 
   const head = snake[snake.length - 1];
 
-  if (direction === "right") {
+  if (direction == "right") {
     snake.push({ x: head.x + size, y: head.y });
   }
-  if (direction === "left") {
+
+  if (direction == "left") {
     snake.push({ x: head.x - size, y: head.y });
   }
-  if (direction === "down") {
+
+  if (direction == "down") {
     snake.push({ x: head.x, y: head.y + size });
   }
-  if (direction === "up") {
+
+  if (direction == "up") {
     snake.push({ x: head.x, y: head.y - size });
   }
 
@@ -108,12 +102,12 @@ const drawGrid = () => {
   for (let i = 30; i < canvas.width; i += 30) {
     ctx.beginPath();
     ctx.lineTo(i, 0);
-    ctx.lineTo(i, canvas.height);
+    ctx.lineTo(i, 600);
     ctx.stroke();
 
     ctx.beginPath();
     ctx.lineTo(0, i);
-    ctx.lineTo(canvas.width, i);
+    ctx.lineTo(600, i);
     ctx.stroke();
   }
 };
@@ -121,7 +115,7 @@ const drawGrid = () => {
 const chackEat = () => {
   const head = snake[snake.length - 1];
 
-  if (head.x === food.x && head.y === food.y) {
+  if (head.x == food.x && head.y == food.y) {
     incrementScore();
     audio.play().catch((e) => {
       console.error("Erro ao tentar reproduzir áudio:", e);
@@ -158,20 +152,29 @@ const checkCollision = () => {
     gameOver();
   }
 };
-
 const gameOver = () => {
   direction = undefined;
-  isGameOver = true; // Indica que o jogo terminou
 
   menu.style.display = "flex";
   finalScore.innerText = score.innerText;
+  let reward;
+
+  if (finalScore.innerText <= 100) {
+    reward = "bronze";
+  } else if (finalScore.innerText <= 250) {
+    reward = "prata";
+  } else if (finalScore.innerText >= 400) {
+    reward = "ouro";
+  }
+
+  adicionarConquista("Snake", `${reward}`);
   canvas.style.filter = "blur(2px)";
 };
 
 const gameLoop = () => {
   clearInterval(loopId);
 
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.clearRect(0, 0, 600, 600);
   drawGrid();
   drawFood();
   moveSnake();
@@ -187,18 +190,19 @@ const gameLoop = () => {
 gameLoop();
 
 document.addEventListener("keydown", ({ key }) => {
-  if (isGameOver) return; // Impede ações após game over
-
-  if (key === "ArrowRight" && direction !== "left") {
+  if (key == "ArrowRight" && direction != "left") {
     direction = "right";
   }
-  if (key === "ArrowLeft" && direction !== "right") {
+
+  if (key == "ArrowLeft" && direction != "right") {
     direction = "left";
   }
-  if (key === "ArrowDown" && direction !== "up") {
+
+  if (key == "ArrowDown" && direction != "up") {
     direction = "down";
   }
-  if (key === "ArrowUp" && direction !== "down") {
+
+  if (key == "ArrowUp" && direction != "down") {
     direction = "up";
   }
 });
@@ -207,27 +211,22 @@ buttonPlay.addEventListener("click", () => {
   score.innerText = "00";
   menu.style.display = "none";
   canvas.style.filter = "none";
-  isGameOver = false; // Reinicia o jogo
+
   snake = [initialPosition];
 });
 
-// Mobile controls
-document.querySelector(".arrow.up").addEventListener("click", () => {
-  if (isGameOver) return; // Bloqueia ações no game over
-  if (direction !== "down") direction = "up";
-});
+function adicionarConquista(jogoId, conquistaId) {
+  // 1. Carregar conquistas existentes do localStorage ou iniciar um novo objeto
+  const conquistas = JSON.parse(localStorage.getItem("conquistas")) || {};
 
-document.querySelector(".arrow.down").addEventListener("click", () => {
-  if (isGameOver) return;
-  if (direction !== "up") direction = "down";
-});
+  // 2. Verificar se o jogo existe no objeto de conquistas; se não, criar um novo array
+  if (!conquistas[jogoId]) conquistas[jogoId] = [];
 
-document.querySelector(".arrow.left").addEventListener("click", () => {
-  if (isGameOver) return;
-  if (direction !== "right") direction = "left";
-});
+  // 3. Adicionar a conquista ao array do jogo, se ainda não estiver lá
+  if (!conquistas[jogoId].includes(conquistaId)) {
+    conquistas[jogoId].push(conquistaId);
 
-document.querySelector(".arrow.right").addEventListener("click", () => {
-  if (isGameOver) return;
-  if (direction !== "left") direction = "right";
-});
+    // 4. Salvar as conquistas atualizadas de volta no localStorage
+    localStorage.setItem("conquistas", JSON.stringify(conquistas));
+  }
+}
