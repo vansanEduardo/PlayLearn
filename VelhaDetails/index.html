@@ -1,53 +1,78 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jogo da Velha - Explicação Detalhada</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <a href="/" class="home-button">HOME</a> 
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a href="../../index.html" class="home-button">Home</a>
+    <a href="../VelhaGame/index.html" class="play-button">Jogar</a>
     <div class="container">
-        <h1>Explicação Completa: Jogo da Velha em JavaScript</h1>
-        <p>Vamos entender como o código por trás do jogo da velha funciona, linha por linha, para que todos possam compreender.</p>
+      <h1>Explicação Completa: Jogo da Velha em JavaScript</h1>
+      <p>
+        Vamos entender como o código por trás do jogo da velha funciona, linha
+        por linha, para que todos possam compreender.
+      </p>
 
-        <!-- Seção 1: Seleção dos Elementos HTML -->
-        <section>
-            <h2>1. Seleção dos Elementos HTML</h2>
-            <p>No início do código, selecionamos os elementos HTML que serão manipulados durante o jogo:</p>
-            <div class="code-block">
-                <pre><code>const cellElements = document.querySelectorAll("[data-cell]");
+      <!-- Seção 1: Seleção dos Elementos HTML -->
+      <section>
+        <h2>1. Seleção dos Elementos HTML</h2>
+        <p>
+          No início do código, selecionamos os elementos HTML que serão
+          manipulados durante o jogo:
+        </p>
+        <div class="code-block">
+          <pre><code>const cellElements = document.querySelectorAll("[data-cell]");
 const board = document.querySelector("[data-board]");
 const winningMessageTextElement = document.querySelector("[data-winning-message-text]");
 const winningMessage = document.querySelector("[data-winning-message]");
 const restartButton = document.querySelector("[data-restart-button]");</code></pre>
-            </div>
-            <h3>1.1. O que é querySelector e querySelectorAll?</h3>
-            <p>Esses dois métodos são usados para selecionar elementos HTML.</p>
-            <ul>
-                <li><strong>querySelector</strong>: Seleciona o primeiro elemento que corresponder ao seletor CSS informado. No exemplo acima, usamos esse método para selecionar o tabuleiro (board), a mensagem de vitória (winningMessage), o texto da mensagem de vitória (winningMessageTextElement) e o botão de reiniciar (restartButton).</li>
-                <li><strong>querySelectorAll</strong>: Seleciona todos os elementos que correspondem ao seletor. No caso do jogo da velha, ele seleciona todas as células do tabuleiro que possuem o atributo data-cell.</li>
-            </ul>
-        </section>
+        </div>
+        <h3>1.1. O que é querySelector e querySelectorAll?</h3>
+        <p>Esses dois métodos são usados para selecionar elementos HTML.</p>
+        <ul>
+          <li>
+            <strong>querySelector</strong>: Seleciona o primeiro elemento que
+            corresponder ao seletor CSS informado. No exemplo acima, usamos esse
+            método para selecionar o tabuleiro (board), a mensagem de vitória
+            (winningMessage), o texto da mensagem de vitória
+            (winningMessageTextElement) e o botão de reiniciar (restartButton).
+          </li>
+          <li>
+            <strong>querySelectorAll</strong>: Seleciona todos os elementos que
+            correspondem ao seletor. No caso do jogo da velha, ele seleciona
+            todas as células do tabuleiro que possuem o atributo data-cell.
+          </li>
+        </ul>
+      </section>
 
-        <!-- Seção 2: Variável de Controle de Turnos -->
-        <section>
-            <h2>2. Variável de Controle de Turnos</h2>
-            <div class="code-block">
-                <pre><code>let isCircleTurn;</code></pre>
-            </div>
-            <h3>2.1. O que essa variável faz?</h3>
-            <p>A variável isCircleTurn é responsável por determinar de quem é a vez. Se ela estiver definida como true, significa que é a vez do círculo (O); caso contrário, é a vez do X.</p>
-            <h3>2.2. Por que usamos uma variável?</h3>
-            <p>Usamos essa variável para alternar entre os dois jogadores. A cada jogada, o valor da variável é trocado (de true para false e vice-versa), controlando de quem é a vez.</p>
-        </section>
+      <!-- Seção 2: Variável de Controle de Turnos -->
+      <section>
+        <h2>2. Variável de Controle de Turnos</h2>
+        <div class="code-block">
+          <pre><code>let isCircleTurn;</code></pre>
+        </div>
+        <h3>2.1. O que essa variável faz?</h3>
+        <p>
+          A variável isCircleTurn é responsável por determinar de quem é a vez.
+          Se ela estiver definida como true, significa que é a vez do círculo
+          (O); caso contrário, é a vez do X.
+        </p>
+        <h3>2.2. Por que usamos uma variável?</h3>
+        <p>
+          Usamos essa variável para alternar entre os dois jogadores. A cada
+          jogada, o valor da variável é trocado (de true para false e
+          vice-versa), controlando de quem é a vez.
+        </p>
+      </section>
 
-        <!-- Seção 3: Combinações Vencedoras -->
-        <section>
-            <h2>3. Definindo as Combinações Vencedoras</h2>
-            <div class="code-block">
-                <pre><code>const winningCombinations = [
+      <!-- Seção 3: Combinações Vencedoras -->
+      <section>
+        <h2>3. Definindo as Combinações Vencedoras</h2>
+        <div class="code-block">
+          <pre><code>const winningCombinations = [
   [0, 1, 2],
   [3, 4, 5],
   [6, 7, 8],
@@ -57,26 +82,38 @@ const restartButton = document.querySelector("[data-restart-button]");</code></p
   [0, 4, 8],
   [2, 4, 6],
 ];</code></pre>
-            </div>
-            <h3>3.1. O que são essas combinações?</h3>
-            <p>Essas são as combinações de posições no tabuleiro que resultam em vitória. Cada número representa uma célula específica, sendo que uma combinação de três números representa uma linha, coluna ou diagonal que, se preenchida por um jogador, resulta em vitória.</p>
-            <h3>3.2. Como os números representam o tabuleiro?</h3>
-            <p>Imagine que o tabuleiro é uma grade 3x3 com nove células. Cada célula tem um número, começando do 0 até o 8:</p>
-            <pre>
+        </div>
+        <h3>3.1. O que são essas combinações?</h3>
+        <p>
+          Essas são as combinações de posições no tabuleiro que resultam em
+          vitória. Cada número representa uma célula específica, sendo que uma
+          combinação de três números representa uma linha, coluna ou diagonal
+          que, se preenchida por um jogador, resulta em vitória.
+        </p>
+        <h3>3.2. Como os números representam o tabuleiro?</h3>
+        <p>
+          Imagine que o tabuleiro é uma grade 3x3 com nove células. Cada célula
+          tem um número, começando do 0 até o 8:
+        </p>
+        <pre>
 0 | 1 | 2
 ---------
 3 | 4 | 5
 ---------
 6 | 7 | 8
-            </pre>
-            <p>Se, por exemplo, um jogador marcar as células 0, 1 e 2 (linha superior), ele vence o jogo.</p>
-        </section>
+            </pre
+        >
+        <p>
+          Se, por exemplo, um jogador marcar as células 0, 1 e 2 (linha
+          superior), ele vence o jogo.
+        </p>
+      </section>
 
-        <!-- Seção 4: Função para Iniciar o Jogo -->
-        <section>
-            <h2>4. Função de Inicialização do Jogo</h2>
-            <div class="code-block">
-                <pre><code>const startGame = () => {
+      <!-- Seção 4: Função para Iniciar o Jogo -->
+      <section>
+        <h2>4. Função de Inicialização do Jogo</h2>
+        <div class="code-block">
+          <pre><code>const startGame = () => {
   isCircleTurn = false;
 
   for (const cell of cellElements) {
@@ -89,23 +126,40 @@ const restartButton = document.querySelector("[data-restart-button]");</code></p
   setBoardHoverClass();
   winningMessage.classList.remove("show-winning-message");
 };</code></pre>
-            </div>
-            <h3>4.1. O que essa função faz?</h3>
-            <p>A função startGame prepara o jogo para uma nova partida. Ela faz três coisas principais:</p>
-            <ul>
-                <li>Define a variável isCircleTurn como false, o que significa que o X joga primeiro.</li>
-                <li>Limpa todas as células do tabuleiro (removendo as marcas anteriores) e configura eventos de clique em cada célula, permitindo que o jogador faça uma jogada.</li>
-                <li>Remove qualquer mensagem de vitória ou empate que tenha sido exibida anteriormente.</li>
-            </ul>
-            <h3>4.2. O que é addEventListener?</h3>
-            <p>Essa função adiciona um "ouvinte de evento" a cada célula, ou seja, algo que fica "esperando" o jogador clicar na célula. Quando o jogador clica, o handleClick é executado.</p>
-        </section>
+        </div>
+        <h3>4.1. O que essa função faz?</h3>
+        <p>
+          A função startGame prepara o jogo para uma nova partida. Ela faz três
+          coisas principais:
+        </p>
+        <ul>
+          <li>
+            Define a variável isCircleTurn como false, o que significa que o X
+            joga primeiro.
+          </li>
+          <li>
+            Limpa todas as células do tabuleiro (removendo as marcas anteriores)
+            e configura eventos de clique em cada célula, permitindo que o
+            jogador faça uma jogada.
+          </li>
+          <li>
+            Remove qualquer mensagem de vitória ou empate que tenha sido exibida
+            anteriormente.
+          </li>
+        </ul>
+        <h3>4.2. O que é addEventListener?</h3>
+        <p>
+          Essa função adiciona um "ouvinte de evento" a cada célula, ou seja,
+          algo que fica "esperando" o jogador clicar na célula. Quando o jogador
+          clica, o handleClick é executado.
+        </p>
+      </section>
 
-        <!-- Seção 5: Função de Manipulação de Clique -->
-        <section>
-            <h2>5. Função de Manipulação de Clique</h2>
-            <div class="code-block">
-                <pre><code>const handleClick = (e) => {
+      <!-- Seção 5: Função de Manipulação de Clique -->
+      <section>
+        <h2>5. Função de Manipulação de Clique</h2>
+        <div class="code-block">
+          <pre><code>const handleClick = (e) => {
   const cell = e.target;
   const currentClass = isCircleTurn ? "circle" : "x";
   placeMark(cell, currentClass);
@@ -114,69 +168,101 @@ const restartButton = document.querySelector("[data-restart-button]");</code></p
   isCircleTurn = !isCircleTurn;
   setBoardHoverClass();
 };</code></pre>
-            </div>
-            <h3>5.1. O que essa função faz?</h3>
-            <p>A função handleClick é executada quando um jogador clica em uma célula do tabuleiro. Ela realiza as seguintes tarefas:</p>
-            <ul>
-                <li>Identifica qual célula foi clicada e armazena isso em uma variável chamada cell.</li>
-                <li>Determina se o jogador atual é o círculo ou o X, atribuindo isso à variável currentClass.</li>
-                <li>Chama a função placeMark, que adiciona a marca do jogador na célula.</li>
-                <li>Verifica se o jogador venceu com a função checkForWin.</li>
-                <li>Verifica se o jogo terminou em empate com a função checkForDraw.</li>
-                <li>Alterna a vez do jogador, trocando o valor de isCircleTurn.</li>
-                <li>Atualiza a classe de hover do tabuleiro para refletir de quem é a vez.</li>
-            </ul>
-        </section>
+        </div>
+        <h3>5.1. O que essa função faz?</h3>
+        <p>
+          A função handleClick é executada quando um jogador clica em uma célula
+          do tabuleiro. Ela realiza as seguintes tarefas:
+        </p>
+        <ul>
+          <li>
+            Identifica qual célula foi clicada e armazena isso em uma variável
+            chamada cell.
+          </li>
+          <li>
+            Determina se o jogador atual é o círculo ou o X, atribuindo isso à
+            variável currentClass.
+          </li>
+          <li>
+            Chama a função placeMark, que adiciona a marca do jogador na célula.
+          </li>
+          <li>Verifica se o jogador venceu com a função checkForWin.</li>
+          <li>
+            Verifica se o jogo terminou em empate com a função checkForDraw.
+          </li>
+          <li>Alterna a vez do jogador, trocando o valor de isCircleTurn.</li>
+          <li>
+            Atualiza a classe de hover do tabuleiro para refletir de quem é a
+            vez.
+          </li>
+        </ul>
+      </section>
 
-        <!-- Seção 6: Função de Colocação de Marcas -->
-        <section>
-            <h2>6. Função para Colocar Marcas nas Células</h2>
-            <div class="code-block">
-                <pre><code>const placeMark = (cell, currentClass) => {
+      <!-- Seção 6: Função de Colocação de Marcas -->
+      <section>
+        <h2>6. Função para Colocar Marcas nas Células</h2>
+        <div class="code-block">
+          <pre><code>const placeMark = (cell, currentClass) => {
   cell.classList.add(currentClass);
 };</code></pre>
-            </div>
-            <h3>6.1. O que essa função faz?</h3>
-            <p>A função placeMark adiciona a classe correspondente ao jogador (X ou O) à célula clicada. Isso resulta na exibição do símbolo do jogador naquela célula.</p>
-        </section>
+        </div>
+        <h3>6.1. O que essa função faz?</h3>
+        <p>
+          A função placeMark adiciona a classe correspondente ao jogador (X ou
+          O) à célula clicada. Isso resulta na exibição do símbolo do jogador
+          naquela célula.
+        </p>
+      </section>
 
-        <!-- Seção 7: Função para Verificar Vitória -->
-        <section>
-            <h2>7. Função para Verificar Vitória</h2>
-            <div class="code-block">
-                <pre><code>const checkForWin = (currentClass) => {
+      <!-- Seção 7: Função para Verificar Vitória -->
+      <section>
+        <h2>7. Função para Verificar Vitória</h2>
+        <div class="code-block">
+          <pre><code>const checkForWin = (currentClass) => {
   return winningCombinations.some(combination => {
     return combination.every(index => {
       return cellElements[index].classList.contains(currentClass);
     });
   });
 };</code></pre>
-            </div>
-            <h3>7.1. O que essa função faz?</h3>
-            <p>A função checkForWin verifica se o jogador atual venceu. Ela faz isso comparando as combinações vencedoras com as marcas no tabuleiro.</p>
-            <h3>7.2. Como funciona?</h3>
-            <p>A função usa o método some para verificar se alguma combinação vencedora é verdadeira. Para cada combinação, usa o método every para verificar se todas as células dessa combinação contêm a marca do jogador atual.</p>
-        </section>
+        </div>
+        <h3>7.1. O que essa função faz?</h3>
+        <p>
+          A função checkForWin verifica se o jogador atual venceu. Ela faz isso
+          comparando as combinações vencedoras com as marcas no tabuleiro.
+        </p>
+        <h3>7.2. Como funciona?</h3>
+        <p>
+          A função usa o método some para verificar se alguma combinação
+          vencedora é verdadeira. Para cada combinação, usa o método every para
+          verificar se todas as células dessa combinação contêm a marca do
+          jogador atual.
+        </p>
+      </section>
 
-        <!-- Seção 8: Função para Verificar Empate -->
-        <section>
-            <h2>8. Função para Verificar Empate</h2>
-            <div class="code-block">
-                <pre><code>const checkForDraw = () => {
+      <!-- Seção 8: Função para Verificar Empate -->
+      <section>
+        <h2>8. Função para Verificar Empate</h2>
+        <div class="code-block">
+          <pre><code>const checkForDraw = () => {
   return [...cellElements].every(cell => {
     return cell.classList.contains("x") || cell.classList.contains("circle");
   });
 };</code></pre>
-            </div>
-            <h3>8.1. O que essa função faz?</h3>
-            <p>A função checkForDraw verifica se todas as células estão preenchidas. Se todas as células contêm uma marca (X ou O), e não há vencedor, o jogo termina em empate.</p>
-        </section>
+        </div>
+        <h3>8.1. O que essa função faz?</h3>
+        <p>
+          A função checkForDraw verifica se todas as células estão preenchidas.
+          Se todas as células contêm uma marca (X ou O), e não há vencedor, o
+          jogo termina em empate.
+        </p>
+      </section>
 
-        <!-- Seção 9: Função de Hover do Tabuleiro -->
-        <section>
-            <h2>9. Função para Atualizar o Hover do Tabuleiro</h2>
-            <div class="code-block">
-                <pre><code>const setBoardHoverClass = () => {
+      <!-- Seção 9: Função de Hover do Tabuleiro -->
+      <section>
+        <h2>9. Função para Atualizar o Hover do Tabuleiro</h2>
+        <div class="code-block">
+          <pre><code>const setBoardHoverClass = () => {
   board.classList.remove("circle");
   board.classList.remove("x");
   if (isCircleTurn) {
@@ -185,30 +271,39 @@ const restartButton = document.querySelector("[data-restart-button]");</code></p
     board.classList.add("x");
   }
 };</code></pre>
-            </div>
-            <h3>9.1. O que essa função faz?</h3>
-            <p>A função setBoardHoverClass altera a classe do tabuleiro para indicar de quem é a vez de jogar. Isso fornece um feedback visual ao jogador.</p>
-        </section>
+        </div>
+        <h3>9.1. O que essa função faz?</h3>
+        <p>
+          A função setBoardHoverClass altera a classe do tabuleiro para indicar
+          de quem é a vez de jogar. Isso fornece um feedback visual ao jogador.
+        </p>
+      </section>
 
-        <!-- Seção 10: Função para Reiniciar o Jogo -->
-        <section>
-            <h2>10. Função para Reiniciar o Jogo</h2>
-            <div class="code-block">
-                <pre><code>restartButton.addEventListener("click", startGame);</code></pre>
-            </div>
-            <h3>10.1. O que essa linha faz?</h3>
-            <p>Essa linha adiciona um ouvinte de evento ao botão de reiniciar. Quando o botão é clicado, ele chama a função startGame, reiniciando o jogo.</p>
-        </section>
+      <!-- Seção 10: Função para Reiniciar o Jogo -->
+      <section>
+        <h2>10. Função para Reiniciar o Jogo</h2>
+        <div class="code-block">
+          <pre><code>restartButton.addEventListener("click", startGame);</code></pre>
+        </div>
+        <h3>10.1. O que essa linha faz?</h3>
+        <p>
+          Essa linha adiciona um ouvinte de evento ao botão de reiniciar. Quando
+          o botão é clicado, ele chama a função startGame, reiniciando o jogo.
+        </p>
+      </section>
 
-        <!-- Seção 11: Início do Jogo -->
-        <section>
-            <h2>11. Inicializando o Jogo</h2>
-            <div class="code-block">
-                <pre><code>startGame();</code></pre>
-            </div>
-            <h3>11.1. O que essa linha faz?</h3>
-            <p>A linha startGame(); é chamada para iniciar o jogo assim que a página é carregada.</p>
-        </section>
+      <!-- Seção 11: Início do Jogo -->
+      <section>
+        <h2>11. Inicializando o Jogo</h2>
+        <div class="code-block">
+          <pre><code>startGame();</code></pre>
+        </div>
+        <h3>11.1. O que essa linha faz?</h3>
+        <p>
+          A linha startGame(); é chamada para iniciar o jogo assim que a página
+          é carregada.
+        </p>
+      </section>
     </div>
-</body>
+  </body>
 </html>
