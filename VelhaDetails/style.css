@@ -126,12 +126,7 @@ code {
         font-size: 14px;
     }
 
-    .home-button, .play-button {
-        padding: 8px 16px;
-        font-size: 14px;
-        top: 10px;
-        right: 10px;
-    }
+  
 }
 
 @media (max-width: 480px) {
@@ -152,8 +147,5 @@ code {
         font-size: 12px;
     }
 
-    .home-button, .play-button  {
-        padding: 6px 12px;
-        font-size: 12px;
-    }
+ 
 }
