@@ -14,9 +14,9 @@ audio.addEventListener("canplaythrough", () => {
 audio.addEventListener("error", (e) => {
   console.error("Erro ao carregar áudio:", e);
 });
-const size = 30;
+const size = 20;
 
-const initialPosition = { x: 270, y: 240 };
+const initialPosition = { x: 240, y: 240 };
 
 let snake = [initialPosition];
 
@@ -99,7 +99,7 @@ const drawGrid = () => {
   ctx.lineWidth = 1;
   ctx.strokeStyle = "#191919";
 
-  for (let i = 30; i < canvas.width; i += 30) {
+  for (let i = 20; i < canvas.width; i += 20) {
     ctx.beginPath();
     ctx.lineTo(i, 0);
     ctx.lineTo(i, 600);
