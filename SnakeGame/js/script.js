@@ -16,7 +16,7 @@ audio.addEventListener("error", (e) => {
 });
 const size = 20;
 
-const initialPosition = { x: 240, y: 240 };
+const initialPosition = { x: 220, y: 240 };
 
 let snake = [initialPosition];
 
@@ -30,7 +30,7 @@ const randomNumber = (min, max) => {
 
 const randomPosition = () => {
   const number = randomNumber(0, canvas.width - size);
-  return Math.round(number / 30) * 30;
+  return Math.round(number / 20) * 20;
 };
 
 const randomColor = () => {
@@ -161,14 +161,15 @@ const gameOver = () => {
 
   if (finalScore.innerText <= 100) {
     reward = "bronze";
-  } else if (finalScore.innerText <= 250) {
+  } else if (finalScore.innerText <= 400) {
     reward = "prata";
-  } else if (finalScore.innerText >= 400) {
+  } else if (finalScore.innerText <= 600) {
     reward = "ouro";
   }
 
   adicionarConquista("Snake", `${reward}`);
   canvas.style.filter = "blur(2px)";
+
 };
 
 const gameLoop = () => {
@@ -189,6 +190,7 @@ const gameLoop = () => {
 
 gameLoop();
 
+  
 document.addEventListener("keydown", ({ key }) => {
   if (key == "ArrowRight" && direction != "left") {
     direction = "right";
@@ -207,11 +209,30 @@ document.addEventListener("keydown", ({ key }) => {
   }
 });
 
+// Mobile controls
+document.querySelector(".arrow.up").addEventListener("click", () => {
+  if (direction !== "down") direction = "up";
+});
+
+document.querySelector(".arrow.down").addEventListener("click", () => {
+  if (direction !== "up") direction = "down";
+});
+
+document.querySelector(".arrow.left").addEventListener("click", () => {
+  if (direction !== "right") direction = "left";
+});
+
+document.querySelector(".arrow.right").addEventListener("click", () => {
+  if (direction !== "left") direction = "right";
+});
+
+
+
+
 buttonPlay.addEventListener("click", () => {
   score.innerText = "00";
   menu.style.display = "none";
   canvas.style.filter = "none";
-
   snake = [initialPosition];
 });
 
