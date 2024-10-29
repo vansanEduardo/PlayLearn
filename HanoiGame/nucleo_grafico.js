@@ -144,6 +144,3 @@ function adicionarConquista(jogoId, conquistaId) {
     localStorage.setItem("conquistas", JSON.stringify(conquistas));
   }
 }
-
-adicionarConquista('Forca', 'bronze');
-
