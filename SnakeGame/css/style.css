@@ -113,10 +113,6 @@ a {
   opacity: 0;
 }
 
-.arrow-buttons button:hover {
-  opacity: 0.1;
-}
-
 .arrow-center {
   display: flex;
   flex-direction: column;
