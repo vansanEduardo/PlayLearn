@@ -81,9 +81,7 @@ function flipCard() {
           pauseTime();
 
           let resultadoP = document.getElementById("resultado");
-          resultadoP.textContent = `Parabéns! Tempo de jogo: ${calculateTime(
-            time
-          )}`;
+          resultadoP.textContent = `Parabéns! Tempo de jogo: ${calculateTime(time)}`;
 
           compararTime(time);
         }
@@ -109,8 +107,6 @@ function restart() {
   let gameOverLayer = document.getElementById("gameOver");
   gameOverLayer.style.display = "none";
 }
-
-
 
 let interval;
 let time = 0;
@@ -145,17 +141,14 @@ function calculateTime(time) {
   return `${displayMinutes}:${displaySeconds}`;
 }
 
-
 function verificarLocalStorage() {
   if (localStorage.length) {
     let timeStorage = localStorage.getItem("time");
     let recorde = document.getElementById("recorde");
     recorde.textContent = timeStorage;
   } else {
-    
     let recorde = document.getElementById("recorde");
     recorde.textContent = "00:00";
-    
   }
 }
 
@@ -167,9 +160,6 @@ function compararTime(time) {
   let time1 = new Date("2022-01-01 " + timeStorage);
   let time2 = new Date("2022-01-01 " + timeA);
 
-  console.log(time1);
-  console.log(time2);
-
   if (time1 < time2) {
     localStorage.setItem("time", timeStorage);
     recorde.textContent = timeStorage;
@@ -177,7 +167,23 @@ function compararTime(time) {
     localStorage.setItem("time", timeA);
     recorde.textContent = timeA;
   }
-  console.log(timeA);
-  console.log(timeStorage);
+
+  // Adicionar conquistas com base no tempo
+  if (time > 50000) { // mais de 1 minuto
+    adicionarConquista("Memory", "bronze");
+  } else if (time >= 40000 && time <= 50000) { // entre 40s e 1 minuto
+    adicionarConquista("Memory", "prata");
+  } else if (time < 30000) { // menos de 30s
+    adicionarConquista("Memory", "ouro");
+  }
 }
 
+// Função para adicionar conquista ao localStorage
+function adicionarConquista(jogoId, conquistaId) {
+  const conquistas = JSON.parse(localStorage.getItem("conquistas")) || {};
+  if (!conquistas[jogoId]) conquistas[jogoId] = [];
+  if (!conquistas[jogoId].includes(conquistaId)) {
+    conquistas[jogoId].push(conquistaId);
+    localStorage.setItem("conquistas", JSON.stringify(conquistas));
+  }
+}
