@@ -99,7 +99,7 @@ body {
   top: 0;
 }
 
-#start,#home {
+#start,.home button {
   font-family: "Righteous", sans-serif;
   padding: 10px 20px;
   font-size: 1rem;
