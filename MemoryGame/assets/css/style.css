@@ -99,7 +99,7 @@ body {
   top: 0;
 }
 
-#start,.home button {
+#start{
   font-family: "Righteous", sans-serif;
   padding: 10px 20px;
   font-size: 1rem;
@@ -108,6 +108,14 @@ body {
   border-radius: 5px;
 }
 
+.home button {
+  font-family: "Righteous", sans-serif;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 5px;
+}
 
 #gameOver {
   position: absolute;
