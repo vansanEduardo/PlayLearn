@@ -78,7 +78,7 @@ const randomPosition = () => {
   positionY = positionY < 0 ? 0 : positionY;
 
   const ghost = document.createElement("img");
-  ghost.src = "img/ghost.png";
+  ghost.src = "img/ghost.webp";
   gamePage.appendChild(ghost);
   ghost.classList.add(randomSize());
   ghost.style.position = "absolute";

@@ -173,7 +173,7 @@ function compararTime(time) {
     adicionarConquista("Memory", "bronze");
   } else if (time >= 40000 && time <= 50000) { // entre 40s e 1 minuto
     adicionarConquista("Memory", "prata");
-  } else if (time < 30000) { // menos de 30s
+  } else if (time < 25000) { // menos de 30s
     adicionarConquista("Memory", "ouro");
   }
 }
