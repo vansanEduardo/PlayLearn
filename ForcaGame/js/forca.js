@@ -113,11 +113,11 @@ function comparalistas(letra) {
 
   if (vitoria == true) {
     abreModal("PARABÉNS!", "Você venceu...");
-    if (tentativas == 6 || tentativas == 5 ) {
+    if (tentativas == 0 || tentativas == 1 ) {
       adicionarConquista("Forca", "bronze");
-    } else if (tentativas == 4 || tentativas == 3) {
+    } else if (tentativas == 2 || tentativas == 3) {
       adicionarConquista("Forca", "prata");
-    } else if(tentativas <= 2) {
+    } else if(tentativas >= 4) {
       adicionarConquista("Forca", "ouro");
     }
     tentativas = 0;
