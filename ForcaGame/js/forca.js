@@ -114,11 +114,11 @@ function comparalistas(letra) {
   if (vitoria == true) {
     abreModal("PARABÉNS!", "Você venceu...");
     if (tentativas <= 6) {
-      adicionarConquista("Hanoi", "bronze");
+      adicionarConquista("Forca", "bronze");
     } else if (tentativas <= 3) {
-      adicionarConquista("Hanoi", "prata");
+      adicionarConquista("Forca", "prata");
     } else {
-      adicionarConquista("Hanoi", "ouro");
+      adicionarConquista("Forca", "ouro");
     }
     tentativas = 0;
     piscarBotaoJogarNovamente(true);
