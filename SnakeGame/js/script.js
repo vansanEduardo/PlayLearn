@@ -185,7 +185,7 @@ const gameLoop = () => {
 
   loopId = setTimeout(() => {
     gameLoop();
-  }, 300);
+  }, 110);
 };
 
 gameLoop();
