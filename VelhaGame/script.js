@@ -104,6 +104,15 @@ const handleClick = (e) => {
   }
 };
 
+
+setTimeout(() => {
+  document.querySelector(".alert").style.display="none"
+}, 3000);
+
+
+
+
+
 startGame();
 
 restartButton.addEventListener("click", startGame);
