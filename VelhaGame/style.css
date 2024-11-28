@@ -196,16 +196,37 @@ a {
   cursor: pointer;
 }
 #bot:hover,
-#multplayer:hover {
+#multplayer:hover,
+#difficulty-selection button:hover{
   color: rgb(110, 27, 198);
   background-color: white;
   transition: 0.5s ease;
   transform: scale(1.05);
 }
 #bot:active,
-#multplayer:active {
+#multplayer:active,
+#difficulty-selection button:active {
   transform: scale(1);
 }
+
+#difficulty-selection{
+  position: absolute;
+  right:0px;
+}
+#difficulty-selection button{
+  width: 50px;
+  height: 20px;
+  font-size: 12px;
+  border-radius: 20px;
+  color: white;
+  background-color: rgb(110, 27, 198);
+  border: none;
+  cursor: pointer;
+}
+
+
+
+
 
 @media (max-width: 800px) {
   .cell {

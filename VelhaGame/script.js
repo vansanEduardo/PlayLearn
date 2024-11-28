@@ -1,15 +1,18 @@
 const cellElements = document.querySelectorAll("[data-cell]");
-const board = document.querySelector("[data-board]")
-const robotButton =  document.querySelector("#bot") 
-const multiplayerButton =  document.querySelector("#multplayer") 
+const board = document.querySelector("[data-board]");
+const robotButton = document.querySelector("#bot");
+const multiplayerButton = document.querySelector("#multplayer");
+const restartButton = document.querySelector("[data-restart-button]");
+const difficultyButtons = document.querySelectorAll("[data-difficulty]");
+const winningMessage = document.querySelector("[data-winning-message]");
 const winningMessageTextElement = document.querySelector(
   "[data-winning-message-text]"
 );
-const winningMessage = document.querySelector("[data-winning-message]");
-const restartButton = document.querySelector("[data-restart-button]");
 
-let isCircleTurn = false; // O jogador X sempre começa
-let isPlayingWithRobot = undefined; // O jogador X sempre começa
+let isCircleTurn = false;
+let isPlayingWithRobot = false;
+let difficulty = "medium"; // Nível padrão de dificuldade
+
 const winningCombinations = [
   [0, 1, 2],
   [3, 4, 5],
@@ -39,11 +42,8 @@ const endGame = (isDraw) => {
   if (isDraw) {
     winningMessageTextElement.innerText = "Empate!";
   } else {
-    winningMessageTextElement.innerText = isCircleTurn
-      ? "O Venceu!"
-      : "X Venceu!";
+    winningMessageTextElement.innerText = isCircleTurn ? "O venceu!" : "X venceu!";
   }
-
   winningMessage.classList.add("show-winning-message");
 };
 
@@ -68,12 +68,7 @@ const placeMark = (cell, classToAdd) => {
 const setBoardHoverClass = () => {
   board.classList.remove("circle");
   board.classList.remove("x");
-
-  if (isCircleTurn) {
-    board.classList.add("circle");
-  } else {
-    board.classList.add("x");
-  }
+  board.classList.add(isCircleTurn ? "circle" : "x");
 };
 
 const swapTurns = () => {
@@ -91,7 +86,6 @@ const robotMove = () => {
   const availableCells = getAvailableCells();
   if (availableCells.length === 0) return;
 
-  // Função para verificar se uma jogada pode vencer
   const findWinningMove = (playerClass) => {
     for (const combination of winningCombinations) {
       const matches = combination.filter((index) =>
@@ -103,48 +97,42 @@ const robotMove = () => {
       );
 
       if (matches.length === 2 && empty.length === 1) {
-        return cellElements[empty[0]]; // Retorna a célula onde o jogador pode vencer
+        return cellElements[empty[0]];
       }
     }
     return null;
   };
 
-  // 1. Verificar se o robô pode vencer
-  let move = findWinningMove("circle");
-  if (!move) {
-    // 2. Bloquear o jogador
-    move = findWinningMove("x");
+  let move = null;
+
+  if (difficulty === "hard") {
+    move = findWinningMove("circle") || findWinningMove("x");
+  } else if (difficulty === "medium") {
+    if (Math.random() > 0.5) {
+      move = findWinningMove("x") || findWinningMove("circle");
+    }
   }
 
-  // 3. Escolher uma jogada estratégica (centro ou cantos)
-  if (!move) {
-    const strategicPositions = [4, 0, 2, 6, 8]; // Centro e cantos
-    move = strategicPositions
-      .map((index) => cellElements[index])
-      .find((cell) => availableCells.includes(cell));
-  }
-
-  // 4. Escolha aleatória, se nenhuma opção anterior estiver disponível
   if (!move) {
     const randomIndex = Math.floor(Math.random() * availableCells.length);
     move = availableCells[randomIndex];
   }
 
-  // Realiza a jogada
-  placeMark(move, "circle");
+  if (move) {
+    placeMark(move, "circle");
 
-  const isWin = checkForWin("circle");
-  const isDraw = checkForDraw();
+    const isWin = checkForWin("circle");
+    const isDraw = checkForDraw();
 
-  if (isWin) {
-    endGame(false);
-  } else if (isDraw) {
-    endGame(true);
-  } else {
-    swapTurns();
+    if (isWin) {
+      endGame(false);
+    } else if (isDraw) {
+      endGame(true);
+    } else {
+      swapTurns();
+    }
   }
 };
-
 
 const handleClick = (e) => {
   const cell = e.target;
@@ -163,23 +151,29 @@ const handleClick = (e) => {
     swapTurns();
 
     if (isPlayingWithRobot && isCircleTurn) {
-      setTimeout(robotMove, 100); // Adiciona um pequeno delay para o robô jogar
+      setTimeout(robotMove, 100);
     }
   }
 };
 
-// Define o modo MultPlayer Local
+// Configurações de botões
 multiplayerButton.addEventListener("click", () => {
-  isPlayingWithRobot = false; // Desativa o robô
+  isPlayingWithRobot = false;
   startGame();
 });
 
-// Define o modo Jogar com um Robô
 robotButton.addEventListener("click", () => {
-  isPlayingWithRobot = true; // Ativa o robô
+  isPlayingWithRobot = true;
   startGame();
+});
+
+restartButton.addEventListener("click", startGame);
+
+difficultyButtons.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    difficulty = e.target.dataset.difficulty;
+    startGame();
+  });
 });
 
 startGame();
-
-restartButton.addEventListener("click", startGame);
