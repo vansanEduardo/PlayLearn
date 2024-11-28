@@ -471,7 +471,7 @@ function carregaListaAutomatica() {
     (palavra048 = {
       nome: "CALLBACK",
       categoria:
-        "ual é o nome dado a um conjunto de instruções que é executado em resposta a um evento",
+        "Qual é o nome dado a um conjunto de instruções que é executado em resposta a um evento",
     }),
     (palavra049 = {
       nome: "DICIONÁRIO",
