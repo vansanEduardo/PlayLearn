@@ -176,6 +176,37 @@ a {
   display: flex;
 }
 
+.buttons {
+  width: 300px;
+  position: absolute;
+  transform: translatex(-50%);
+  top: 50px;
+  left: 50%;
+}
+#bot,
+#multplayer {
+  width: 125px;
+  height: 30px;
+  margin: 10px;
+  font-size: 12px;
+  border-radius: 20px;
+  color: white;
+  background-color: rgb(110, 27, 198);
+  border: none;
+  cursor: pointer;
+}
+#bot:hover,
+#multplayer:hover {
+  color: rgb(110, 27, 198);
+  background-color: white;
+  transition: 0.5s ease;
+  transform: scale(1.05);
+}
+#bot:active,
+#multplayer:active {
+  transform: scale(1);
+}
+
 @media (max-width: 800px) {
   .cell {
     width: 100px;
@@ -190,6 +221,24 @@ a {
   }
   .winning-message-button {
     font-size: 1rem;
+  }
+  .cell.x::before,
+  .cell.x::after,
+  .board.x .cell:not(.x):not(.circle):hover::after,
+  .board.x .cell:not(.x):not(.circle):hover::before {
+    content: "";
+    height: calc(150px * 0.1);
+    width: calc(150px * 0.5);
+    background: white;
+    position: absolute;
+  }
+  .cell.circle::before,
+  .cell.circle::after,
+  .board.circle .cell:not(.x):not(.circle):hover::after,
+  .board.circle .cell:not(.x):not(.circle):hover::after {
+    content: "";
+    height: calc(100px * 0.3); /* Mantém o tamanho do círculo */
+    width: calc(100px * 0.3); /* Mantém o tamanho do círculo */
   }
 }
 @media (max-width: 440px) {
