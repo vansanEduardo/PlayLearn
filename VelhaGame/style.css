@@ -237,7 +237,40 @@ a {
 }
 
 
-
+@media (max-width: 1300px) {
+  .cell {
+    width: 120px;
+    height: 120px;
+  }
+  .cell {
+    width: 120px;
+    height: 120px;
+  }
+  .winning-message-text {
+    font-size: 2rem;
+  }
+  .winning-message-button {
+    font-size: 1rem;
+  }
+  .cell.x::before,
+  .cell.x::after,
+  .board.x .cell:not(.x):not(.circle):hover::after,
+  .board.x .cell:not(.x):not(.circle):hover::before {
+    content: "";
+    height: calc(150px * 0.1);
+    width: calc(150px * 0.5);
+    background: white;
+    position: absolute;
+  }
+  .cell.circle::before,
+  .cell.circle::after,
+  .board.circle .cell:not(.x):not(.circle):hover::after,
+  .board.circle .cell:not(.x):not(.circle):hover::after {
+    content: "";
+    height: calc(100px * 0.3); /* Mantém o tamanho do círculo */
+    width: calc(100px * 0.3); /* Mantém o tamanho do círculo */
+  }
+}
 
 
 @media (max-width: 800px) {
