@@ -1,6 +1,7 @@
 const cellElements = document.querySelectorAll("[data-cell]");
 const board = document.querySelector("[data-board]");
 const robotButton = document.querySelector("#bot");
+const textDifficulty = document.querySelector("#difficulty");
 const multiplayerButton = document.querySelector("#multplayer");
 const winningMessageTextElement = document.querySelector(
   "[data-winning-message-text]"
@@ -11,7 +12,7 @@ const difficultyButtons = document.querySelectorAll("[data-difficulty]");
 
 let isCircleTurn = false;
 let isPlayingWithRobot = undefined;
-let difficulty = "medium"; // Nível padrão do robô
+let difficulty = "medio"; // Nível padrão do robô
 
 const winningCombinations = [
   [0, 1, 2],
@@ -25,8 +26,12 @@ const winningCombinations = [
 ];
 
 const startGame = () => {
+  if(isPlayingWithRobot){
+    textDifficulty.innerHTML = "Dificuldade:" + " " + difficulty;
+  } else {
+    textDifficulty.innerHTML = ""
+  }
   isCircleTurn = false;
-
   for (const cell of cellElements) {
     cell.classList.remove("circle");
     cell.classList.remove("x");
@@ -91,6 +96,7 @@ const getAvailableCells = () => {
 };
 
 const robotMove = () => {
+  
   const availableCells = getAvailableCells();
   if (availableCells.length === 0) return;
 
@@ -99,9 +105,10 @@ const robotMove = () => {
       const matches = combination.filter((index) =>
         cellElements[index].classList.contains(playerClass)
       );
-      const empty = combination.filter((index) =>
-        !cellElements[index].classList.contains("x") &&
-        !cellElements[index].classList.contains("circle")
+      const empty = combination.filter(
+        (index) =>
+          !cellElements[index].classList.contains("x") &&
+          !cellElements[index].classList.contains("circle")
       );
 
       if (matches.length === 2 && empty.length === 1) {
@@ -113,18 +120,18 @@ const robotMove = () => {
 
   let move = null;
 
-  if (difficulty === "impossible") {
+  if (difficulty === "impossivel") {
     // Tentar ganhar
     move = findWinningMove("circle");
     // Bloquear se não puder ganhar
     if (!move) move = findWinningMove("x");
-  } else if (difficulty === "hard") {
+  } else if (difficulty === "dificil") {
     // Tentar ganhar ou bloquear
     move = findWinningMove("circle") || findWinningMove("x");
-  } else if (difficulty === "medium" && Math.random() > 0.5) {
+  } else if (difficulty === "medio" && Math.random() > 0.5) {
     // Jogada mista
     move = findWinningMove("x") || findWinningMove("circle");
-  } 
+  }
 
   if (!move) {
     // Jogada aleatória
