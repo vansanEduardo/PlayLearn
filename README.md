@@ -1,8 +1,7 @@
-# React + Vite
+# PlayLearn
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+PlayLearn é uma plataforma de jogos educacionais. O principal objetivo é engajar os alunos a desenvolverem habilidades essenciais como memória, lógica e reflexo, além de despertar o interesse por desenvolver seus próprios jogos por meio da programação. O projeto foi desenvolvido com essa proposta: tornar o aprendizado mais divertido!
 
-Currently, two official plugins are available:
+Projeto realizado na Faculdade de Engenharia da Computação.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Acesse o site para saber mais: [www.playlearn.com](http://www.playlearn.com)
