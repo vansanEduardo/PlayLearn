@@ -1,0 +1,28 @@
+/* src/routes/NotFound.css */
+.not-found {
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+  }
+  
+  .not-found img{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+  }
+
+  #back-home{
+    position: absolute;
+    position: absolute;
+    left: 50%;
+    top: 80%;
+    transform: translate(-50%,-50%);
+    width: 250px;
+    height: 50px;
+    background-color: rgb(252, 213, 41);
+  }
+
+ #back-home:hover{
+    background-color: #3621f8;
+ }

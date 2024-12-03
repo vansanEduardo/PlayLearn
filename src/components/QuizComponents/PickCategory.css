@@ -1,23 +1,26 @@
-#category{
-    text-align: center;
-    max-width: 500px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  #category h2,#category p{
-  margin-bottom: 1rem;
-  }
-  
-  #category p{
-      color: #8435de;
-  }
-  
-  #category img{
-      margin: 2rem auto;
-      max-width: 300px;
-  }
+#category {
+  text-align: center;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+}
 
-  #category button{
-    margin: 2rem;
-  }
+#category h2,
+#category p {
+  margin-bottom: 1rem;
+  font-family: "Poppins";
+}
+
+#category p {
+  color: #8435de;
+}
+
+#category img {
+  margin: 2rem auto;
+  max-width: 300px;
+}
+
+#category button {
+  margin: 2rem;
+  font-family: "Poppins";
+}

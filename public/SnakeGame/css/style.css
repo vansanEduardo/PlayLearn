@@ -1,91 +1,143 @@
-@font-face {
-    font-family: minhafonte;
-    src: url(./SuperMario256.ttf);
-}
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "minhafonte", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "minhafonte", sans-serif;
 }
 
 body {
-    background-color: #191919;
-    display: flex;
-    min-height: 100vh;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    color: white;
+  background-color: #191919;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  overflow: hidden;
 }
 
 canvas {
-    background-color: #111;
+  margin: 5dvh auto;
+  background-color: #111;
 }
 
 .score {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.5rem;
+  margin-top: 2rem;
 }
 
 .score--value {
-    font-weight: 700;
-    font-size: 4.5rem;
-    display: block;
-    margin-top: -10px;
+  font-weight: 700;
+  font-size: 3.5rem;
+  display: block;
+  margin-top: -10px;
 }
 
 .menu-screen {
-    position: absolute;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    z-index: 1;
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
 }
 
 .game-over {
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 3rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 3rem;
 }
 
 .final-score {
-    font-weight: 500;
-    font-size: 1.5rem;
+  font-weight: 500;
+  font-size: 1.5rem;
 }
 
 .btn-play {
-    border: none;
-    border-radius: 100px;
-    padding: 10px 15px 10px 12px;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #333;
-    margin-top: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    cursor: pointer;
+  border: none;
+  border-radius: 100px;
+  padding: 10px 15px 10px 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
 }
 
-#home{
-    border: none;
-    border-radius: 100px;
-    padding: 10px 15px 10px 12px;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #333;
-    margin-top: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    cursor: pointer;
+#home {
+  border: none;
+  border-radius: 100px;
+  padding: 10px 15px 10px 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
 }
- a{
-    text-decoration: none;
+a {
+  text-decoration: none;
+}
+.controls {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.arrow-buttons {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.arrow-buttons button {
+  opacity: 0;
+}
+
+.arrow-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+}
+
+.arrow-buttons .left,
+.arrow-buttons .right {
+  width: 50%;
+  height: 100%;
+}
+
+.arrow-center .down,
+.arrow-center .up {
+  width: 100%;
+  height: 50%;
+  position: relative;
+}
+
+@media (max-width: 800px) {
+  canvas {
+    width: 80%;
+    height: 80%;
+  }
 }

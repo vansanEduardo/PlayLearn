@@ -13,7 +13,6 @@ const initialState = {
   optionToHide: null,
 };
 
-console.log(initialState);
 
 const quizReducer = (state, action) => {
   switch (action.type) {

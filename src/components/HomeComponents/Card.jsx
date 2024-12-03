@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./Card.css";
 import { Link } from "react-router-dom";
 
-const Card = ({ img, gameName, link, desc }) => {
+const Card = ({ img, gameName, link, desc, novisible }) => {
   const [modal, setModal] = useState(false);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const Card = ({ img, gameName, link, desc }) => {
         <h3>{gameName}</h3>
       </div>
       <div className="btn-play center">
-        <button onClick={toggleModal}>Jogar</button>
+        <button onClick={toggleModal}>Conhecer</button>
       </div>
 
       <div className={`modal-window ${modal ? "open" : ""}`} id="modal-window">
@@ -58,15 +58,17 @@ const Card = ({ img, gameName, link, desc }) => {
 
           <div className="game-desc">
             <h2>Descrição</h2>
-            <p>
-              {desc}
-            </p>
+            <p>{desc}</p>
           </div>
 
           <div className="btn-secondary">
-            <Link to={link + "details"}>
-              <button>Como Fazer esse Jogo</button>
-            </Link>
+            {novisible ? (
+              ""
+            ) : (
+              <Link to={link + "details"}>
+                <button>Como Fazer esse Jogo</button>
+              </Link>
+            )}
           </div>
         </div>
       </div>

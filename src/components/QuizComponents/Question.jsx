@@ -39,9 +39,17 @@ const Question = () => {
       {!quizState.answerSelected && !quizState.help && (
         <>
           {currentQuestion.tip && (
-            <button  className="btn-quiz" onClick={() => dispatch({ type: "SHOW_TIP" })}>Dica</button>
+            <button
+              className="btn-quiz"
+              onClick={() => dispatch({ type: "SHOW_TIP" })}
+            >
+              Dica
+            </button>
           )}
-          <button  className="btn-quiz" onClick={() => dispatch({ type: "REMOVE_OPTION" })}>
+          <button
+            className="btn-quiz"
+            onClick={() => dispatch({ type: "REMOVE_OPTION" })}
+          >
             Excluir uma
           </button>
         </>
@@ -50,7 +58,10 @@ const Question = () => {
         <p>{currentQuestion.tip}</p>
       )}
       {quizState.answerSelected && (
-        <button  className="btn-quiz" onClick={() => dispatch({ type: "CHANGE_QUESTION" })}>
+        <button
+          className="btn-quiz"
+          onClick={() => dispatch({ type: "CHANGE_QUESTION" })}
+        >
           Continuar
         </button>
       )}

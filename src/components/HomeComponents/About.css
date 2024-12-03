@@ -1,18 +1,14 @@
 .container-about {
-  height: 1000px;
+  height: 100%;
   background-image: url("../../assets/aboutback.png");
   background-attachment: fixed;
-  margin-left: -50px;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1rem;
 }
 
 .about {
-  background-color: rgba(0, 0, 0, 25%);
-  width: 800px;
-  height: 700px;
-  border-radius: 40px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -20,57 +16,43 @@
 }
 
 .about .title-about {
-  margin: 5rem;
+  margin: 2rem;
 }
 
 .about .description {
   color: #fff;
-  width: 700px;
+  width: 50%;
   text-align: center;
   line-height: 1.5rem;
   margin-bottom: 6rem;
+  width: 90%;
 }
 
 @media (max-width: 1400px) {
-  .about {
-    width: 600px;
-  }
   .about .description {
     font-size: 14px;
-    width: 400px;
   }
 }
 
 @media (max-width: 850px) {
   .about {
     background: none;
-  }
-  .about .description {
-    width: 300px;
+    height: 100%;
   }
 }
 @media (max-width: 600px) {
-  .container-about{
-    margin: 0 auto;
+  .about {
+    font-size: 0.7rem;
+    text-align: center;
   }
-    .about{
-      text-align: center;
-        width: 300px;
-        font-size: 0.7rem;
-       
-    }
-    .about .description {
-        text-align: center;
-        width: 250px;
-        font-size: 0.6rem;
-        margin: 2rem auto;
-      }
-      
+  .about .description {
+    text-align: center;
+    font-size: 0.6rem;
+    margin: 2rem auto;
+  }
 }
-@media (max-width: 375px){
-    .container-about{
-        width: 375px;
-      background-position: cover;
-    }
-   
+@media (max-width: 375px) {
+  .about {
+    font-size: 0.6rem;
   }
+}

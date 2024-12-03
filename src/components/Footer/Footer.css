@@ -1,5 +1,4 @@
 footer {
-  margin-left: -50px;
   height: 350px;
   background: linear-gradient(#5544cc, #8a56c6);
   display: flex;
@@ -27,7 +26,7 @@ footer p{
   margin-bottom: 2rem;
 }
 
-.links a :hover{
+.links a :hover,.contacts p:nth-child(1):hover{
   color: #8a56c6;
 }
 
@@ -54,12 +53,7 @@ footer p{
     bottom: 10px;
 }
 
-@media (max-width: 1400px){
- footer{
-  margin-left: 0;
- }
- 
-}
+
 @media (max-width: 850px){
   footer h2{
     font-size: 18px;

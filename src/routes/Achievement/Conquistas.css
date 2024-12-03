@@ -1,0 +1,83 @@
+.container-conquistas {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-conquistas h1 {
+  margin: 1rem auto;
+  color: #939;
+}
+.container-conquistas .logo {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 10px;
+}
+
+.game-achievement {
+  display: flex;
+  align-items: center;
+  border: 1px solid #000;
+  background-color: #ffffff10;
+  margin-bottom: 1rem;
+  width: 70%;
+  height: 150px;
+  border-radius: 20px;
+  position: relative;
+}
+
+.trophy {
+  display: flex;
+  gap: 50px;
+  position: absolute;
+  right: 20px;
+ 
+}
+.trophy img {
+  width: 150px;
+  height: 150px;
+  opacity: 0.1;
+}
+
+.active {
+  opacity: 1 !important;
+}
+
+@media (max-width: 1400px) {
+  .container-conquistas {
+    margin-left: 120px;
+  }
+  .trophy {
+    gap: 10px;
+    right: 10px;
+  }
+  .trophy img {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 700px) {
+  .container-conquistas {
+    margin: 5rem auto;
+  }
+  .game-achievement {
+    width: 90%;
+  }
+  .trophy {
+    gap: 5px;
+  }
+  .trophy img {
+    width: 80px;
+    height: 80px;
+  }
+  .container-conquistas .logo {
+    width: 80px;
+    height: 80px;
+  }
+}

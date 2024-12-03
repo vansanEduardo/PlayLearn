@@ -10,6 +10,22 @@
     <title>Jogo da Velha</title>
   </head>
   <body>
+
+    <div class="buttons">
+      <div class="buttons-controler">
+        <button id="multplayer">MultPlayer Local</button>
+      <button id="bot">Jogar com um robô</button> 
+      </div>
+      <div id="difficulty-selection">
+        <button data-difficulty="facil">Fácil</button>
+        <button data-difficulty="medio">Médio</button>
+        <button data-difficulty="dificil">Difícil</button>
+        <button data-difficulty="impossivel">Impossível</button>
+      </div>
+      <p id="difficulty"></p>
+      </div>
+    
+
     <div class="board" data-board>
       <div class="cell" data-cell></div>
       <div class="cell" data-cell></div>
@@ -27,8 +43,7 @@
       <button class="winning-message-button" data-restart-button>
         Reiniciar!
       </button>
-      <a href="/"><button class="winning-message-button" data-restart-button> Voltar Ao PlayLearn</button>
-       
+      <a href="/PlayLearn"><button class="winning-message-button" data-restart-button> Voltar Ao PlayLearn</button>
     </div>
     <script src="./script.js"></script>
   </body>

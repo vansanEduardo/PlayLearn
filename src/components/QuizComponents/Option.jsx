@@ -13,7 +13,8 @@ const Option = ({ option, selectOption, answer, hide }) => {
       className={`
       option
         ${quizState.answerSelected && option === answer ? "correct" : ""} ${
-        quizState.answerSelected && option !== answer ? "wrong" : "" }
+        quizState.answerSelected && option !== answer ? "wrong" : ""
+      }
           
         ${hide ? "hide" : ""}
         `}

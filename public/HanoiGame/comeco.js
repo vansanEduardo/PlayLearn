@@ -1,9 +1,9 @@
-
+var u;
 var  g = 4;
 window.onload = function(){
 	
 
-var u = setInterval(mudarblur,50);
+ u = setInterval(mudarblur,50);
 	
 	
 }

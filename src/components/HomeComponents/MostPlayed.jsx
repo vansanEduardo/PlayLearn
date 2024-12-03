@@ -1,8 +1,17 @@
 import Card from "./Card";
 import "./MostPlayed.css";
+import { Link } from "react-router-dom";
 import Logojgvelha from "../../assets/logojgvelha.png";
 import LogoHanoi from "../../assets/logohanoi.png";
 import Snake from "../../assets/snake.png";
+
+const scrollToSection = (id) => {
+  const section = document.getElementById(id);
+  if (section) {
+    section.scrollIntoView({ behavior: "smooth" });
+  }
+};
+
 const MostPlayed = () => {
   return (
     <div className="container-mostplayed">
@@ -39,9 +48,9 @@ const MostPlayed = () => {
       </div>
 
       <div className="btn-secondary">
-        <a href="#games">
+        <Link to="#" onClick={() => scrollToSection("games")}>
           <button>Todos os Jogos</button>
-        </a>
+        </Link>
       </div>
     </div>
   );

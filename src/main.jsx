@@ -3,20 +3,26 @@ import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
 import Home from "./routes/Home/Home.jsx";
 import "./index.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import TicTacToeRedirect from "./routes/Redirect/TicTacToeRedirect.jsx";
 import SnakeRedirect from "./routes/Redirect/SnakeRedirect.jsx";
 import ForcaRedirect from "./routes/Redirect/ForcaRedirect.jsx";
 import HanoiRedirect from "./routes/Redirect/HanoiRedirect.jsx";
 import GhostRedirect from "./routes/Redirect/GhostRedirect.jsx";
 import Quiz from "./routes/Quiz/Quiz.jsx";
-import HanoiDetailRedirect from "./routes/GameDetails/HanoiDetailsRedirect.jsx"
-import SnakeDetailsRedirect from "./routes/GameDetails/SnakeDetailsRedirect.jsx"
+import HanoiDetailRedirect from "./routes/GameDetails/HanoiDetailsRedirect.jsx";
+import SnakeDetailsRedirect from "./routes/GameDetails/SnakeDetailsRedirect.jsx";
 import { QuizProvider } from "./context/quiz.jsx";
 import ForcaDetails from "./routes/GameDetails/ForcaDetailsRedirect.jsx";
+import NotFound from "./routes/NotFound/NotFound.jsx";
+import GhostDetails from "./routes/GameDetails/GhostDetailsRedirect.jsx";
+import Conquistas from "./routes/Achievement/Conquistas.jsx";
+import VelhaDetails from "./routes/GameDetails/VelhaDetailsRedirect.jsx";
+import MemoryRedirect from "./routes/Redirect/MemoryRedirect.jsx";
+import MemoryDetails from "./routes/GameDetails/MemoryDetailsRedirect.jsx";
 
-
-const router = createBrowserRouter([
+// Criando o Hash Router
+const router = createHashRouter([
   {
     path: "/",
     element: <App />,
@@ -43,7 +49,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/ghost",
-        element: <GhostRedirect/>
+        element: <GhostRedirect />,
+      },
+      {
+        path: "/memory",
+        element: <MemoryRedirect />,
       },
       {
         path: "/quiz",
@@ -54,21 +64,42 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path:"hanoidetails",
-        element: <HanoiDetailRedirect/>
+        path: "hanoidetails",
+        element: <HanoiDetailRedirect />,
       },
       {
         path: "snakedetails",
-        element: <SnakeDetailsRedirect/>
+        element: <SnakeDetailsRedirect />,
       },
       {
         path: "forcadetails",
-        element: <ForcaDetails/>
+        element: <ForcaDetails />,
+      },
+      {
+        path: "ghostdetails",
+        element: <GhostDetails />,
+      },
+      {
+        path: "velhadetails",
+        element: <VelhaDetails/>,
+      },
+      {
+        path: "memorydetails",
+        element: <MemoryDetails/>,
+      },
+      {
+        path: "conquistas",
+        element: <Conquistas/>,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },
 ]);
 
+// Renderizando o aplicativo
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <RouterProvider router={router} />

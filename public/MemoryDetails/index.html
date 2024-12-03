@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Velha - Explicação Detalhada</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="/PlayLearn" class="home-button">Home</a>
+    <a href="../MemoryGame/index.html" class="play-button">Jogar</a>
+    <div class="container">
+        <h1>Explicação de como fazer um jogo da memoria</h1>
+        <p>Vamos quebrar tudo em pedaços pequenos e fáceis para entender como o jogo funciona.</p>
+
+      
+        <section>
+            <h2>1. O início do jogo</h2>
+            <img src="iniciojogo.png">
+            <p>Quando o jogo começa, a função startGame é chamada.
+
+                Ela faz coisas como:
+                <li>Esconder a tela de início (o menu).</li>
+                <li> Tocar uma música de início (opcional).</li>
+                <li>Zerar o cronômetro e começar o tempo do jogo.</li>
+                <li>Criar as cartas para o tabuleiro usando outra função chamada initializeCards.</li></p>
+            
+            
+            
+        </section>
+
+        
+        <section>
+            <h2>2. Criando as cartas</h2>
+            <img src="criacao.png">
+            <p>A função initializeCards pega todas as cartas que o jogo criou e coloca na tela. Cada carta é um bloco div, e cada uma tem duas "faces":
+
+                <li>FRONT (frente): Mostra o ícone da carta.</li>
+                <li>BACK (verso): Mostra o padrão do fundo da carta.</li>
+                <li>As cartas começam viradas para cima por um curto período e depois viram para baixo.</li></p>
+        </section>
+
+      
+        <section>
+            <h2>3. Quando clicamos em uma carta</h2>
+            <img src="virarcarta.png">
+           <p>A função flipCard é chamada sempre que clicamos em uma carta.
+
+            Primeiro, ela verifica se podemos virar a carta (usando a função game.setCard).
+            Depois de virar, verifica:
+            <li>Se as duas cartas viradas são iguais:</li>
+            <li>Sim: Elas continuam viradas e o jogo verifica se acabou.</li>
+            <li>Não: Elas voltam a ficar viradas para baixo após 1 segundo.</li></p>
+       
+        <section>
+            <h2>4. Tempo e recorde</h2>
+            <img src="tempo.png">
+            <p>O jogo também mede quanto tempo você levou para terminar e salva seu recorde no navegador usando localStorage.
+
+                <li>Tempo atual: O cronômetro atualiza a cada segundo.</li>
+                <li>Recorde: Quando você termina, compara seu tempo com o recorde salvo. O menor tempo é o novo recorde.</li></p> 
+            
+        </section>
+        <section>
+            <h2>5. Verificar se as cartas são iguais</h2>
+            <img src="verificar.png">
+            
+                <h3>5.1 Verificação inicial:</h3> <p> A função primeiro verifica se existem duas cartas selecionadas (this.firstCard e this.secondCard). Se uma delas for null, retorna false porque não há duas cartas para comparar.</p>
+                <h3>5.2 Comparação de ícones:</h3> <p>Se as duas cartas foram selecionadas, a função compara o valor da propriedade icon de ambas as cartas:
+                <li>this.firstCard.icon === this.secondCard.icon: Se os ícones forem iguais, retorna true indicando que as cartas são iguais.</li>
+                <li>Caso contrário, retorna false.</li>
+            </p> 
+            
+        </section>
+        <section>
+            <h2>6. Embaralhar as cartas</h2>
+            <img src="embaralhar.png">
+            <h3>6.1 Define o índice inicial:</h3>
+            <p>currentIndex começa com o tamanho total do array de cartas (this.cards.length).</p>
+            <h3>6.2 Gera um índice aleatório:</h3>
+            <p>Para cada posição no array, a função calcula um índice aleatório dentro do intervalo restante:
+                <li>Math.floor(Math.random() * currentIndex) → Retorna um número aleatório entre 0 e currentIndex - 1.</li></p>
+            <h3>6.3 Troca as cartas:</h3>
+            <p>As cartas na posição atual (currentIndex - 1) e na posição aleatória (randomIndex) são trocadas de lugar:</p>
+            <img src="trocaAscartas.png">
+            <p><li>Isso garante que cada carta tenha a mesma probabilidade de estar em qualquer posição do baralho.</li></p>
+            <h3>6.4 Atualiza o índice:</h3>
+            <p>currentIndex--: Reduz o índice atual, movendo-se para a próxima posição do array.</p>
+            <h3></h3>
+                
+            
+        </section>
+
+
+       
+</body>
+</html>

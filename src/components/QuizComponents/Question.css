@@ -1,22 +1,35 @@
-#question{
-    text-align: center;
-    max-width: 500px;
-    background-color: #8435de;
-    border-radius: 2rem;
-    padding: 2rem;
-    font-family: Arial;
-  }
-  
-  #question h2{
+#question {
+  text-align: center;
+  max-width: 500px;
+  background-color: #8435de;
+  border-radius: 2rem;
+  padding: 2rem;
+}
+
+#question h2 {
   margin-bottom: 2rem;
+  font-family: "Poppins";
+}
+
+#question p {
+  margin-bottom: 1rem;
+  font-family: "Poppins";
+}
+
+#question button {
+  border: 2px solid #fff;
+  margin: 5px;
+  font-family: "Poppins";
+}
+
+@media (max-width: 500px) {
+  #question {
+    max-width: 400px;
   }
-  
-  #question p{
-     margin-bottom: 1rem;
+}
+
+@media (max-width: 400px) {
+  #question {
+    max-width: 350px;
   }
-  
-  #question button{
-    border: 2px solid #fff;
-    margin: 1rem;
-    
-  }
+}

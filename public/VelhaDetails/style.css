@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #1a1b2f;
+    color: #e6e6e6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding-top: 80px;
+}
+
+header h1 {
+    font-size: 32px;
+    margin: 0;
+    color: #8A56C6;
+}
+
+.container {
+    max-width: 1000px;
+    padding: 20px;
+    background-color: #191919;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    margin-bottom: 40px;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    margin-top: 35px;
+    color: #8A56C6;
+    border-bottom: 2px solid #8A56C6;
+    padding-bottom: 5px;
+}
+
+/* Estilo para listas */
+ul, ol {
+    padding-left: 20px; /* Indentação para alinhar dentro do container */
+    margin-bottom: 10px;
+}
+
+.code-block {
+    background-color:#191919;
+    color: #c3f73a;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+    font-family: monospace;
+}
+
+.code-block code {
+    color: #8ecae6;
+}
+
+code {
+    background-color: #191919;
+    color: #c3f73a;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+.home-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #8A56C6;
+    color: #1a1b2f;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    transition: background-color 0.5s ease;
+}
+
+.play-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #8A56C6;
+    color: #1a1b2f;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    transition: background-color 0.5s ease;
+}
+
+.home-button:hover,.play-button:hover {
+    background-color: #8e2ffb;
+    transform: scale(1.05);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    body {
+        padding-top: 60px;
+    }
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    .container {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    section h2 {
+        font-size: 20px;
+    }
+
+    .code-block {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+  
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 24px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    section h2 {
+        font-size: 18px;
+    }
+
+    .code-block {
+        padding: 6px;
+        font-size: 12px;
+    }
+
+ 
+}

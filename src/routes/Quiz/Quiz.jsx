@@ -12,6 +12,7 @@ function Quiz() {
   
 
   return (
+    
     <div className="quiz">
       <h1>Quiz De Programação</h1>
       {quizState.gameStage === "Start" && <Welcome />}

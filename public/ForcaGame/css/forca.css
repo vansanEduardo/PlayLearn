@@ -142,6 +142,7 @@ body{
     font-size: 1.5rem;
     cursor: pointer;
     border: none;
+    background-color: transparent;
 }
 #home:hover{
     color: #8b008b;

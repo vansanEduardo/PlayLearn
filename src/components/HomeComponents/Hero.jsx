@@ -8,8 +8,8 @@ const Hero = () => {
           Bem-Vindo ao Play<span>Learn!</span>
         </h1>
         <p>
-          No PlayLearn, aprender é uma aventura! Mergulhe em jogos divertidos
-          que fazem você pensar e brincar ao mesmo tempo
+          No PlayLearn, aprender é uma aventura! Mergulhe em jogos divertidos ou
+          crie seus próprios, combinando diversão e criatividade.
         </p>
       </div>
       <div className="panel">

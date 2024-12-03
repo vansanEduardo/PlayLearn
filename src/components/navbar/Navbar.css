@@ -1,13 +1,12 @@
-
 .container {
   width: 200px;
-  height: 100vh;
+  height: 100%;
   background-color: #191919;
 
   position: fixed;
+  z-index: 100;
   top: 0;
   left: 0;
-
 }
 
 nav {
@@ -21,10 +20,51 @@ nav {
   margin: 2rem 1rem;
 }
 .title-navbar h3:hover {
-  transform:scale(1.1);
+  transform: scale(1.05);
+  transition: 0.3s ease;
 }
 
+.play button {
+  width: 120px;
+  height: 30px;
+  position: relative;
+  background: linear-gradient(0deg, #8a56c6, #5645cc);
+  transition: 0.3s ease-in-out;
+}
+.play button:after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 20px;
+  border: 3px solid #8a56c6;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ring 3s infinite;
+}
 
+@keyframes ring {
+  0% {
+    width: 10px;
+    height: 10px;
+    opacity: 1;
+  }
+  100% {
+    width: 140px;
+    height: 50px;
+    opacity: 0;
+  }
+}
+
+.play button:hover {
+  transform: scale(1.05);
+}
+
+.play button:active {
+  transform: scale(0.9);
+}
 
 .navigate {
   margin-top: 3rem;
@@ -40,79 +80,74 @@ nav {
   gap: 1rem;
 }
 
-.navigate a  {
-  font-size: 12px;
+.navigate a {
+  font-size: 10px;
 }
 
-
-.navigate a >:hover,.navigate a:hover{
-    transform: scale(1.1);
-    color: #5645CC;
+.navigate a > :hover,
+.navigate a:hover {
+  transform: scale(1.05);
+  transition: 0.3s ease-in-out;
+  color: #5645cc;
 }
 
-.select{
+.select {
   transform: scale(1.1);
-    color: #5645CC;
+  color: #5645cc;
 }
 
 /* Responsividade */
 
-
-@media (max-width: 1400px){
-  .container{
+@media (max-width: 1400px) {
+  .container {
     width: 150px;
   }
-  
-  .title-navbar{
-    font-size: .7rem;
+
+  .title-navbar {
+    font-size: 0.7rem;
   }
 }
 
-
-@media (max-width: 700px){
-  .container{
+@media (max-width: 700px) {
+  .container {
     width: 100%;
     height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 100;
-   }
-   nav{
+  }
+  .play button {
+    display: none;
+  }
+  nav {
     justify-content: center;
     align-items: center;
     flex-direction: row;
-   }
-   .navigate{
+  }
+  .navigate {
     position: absolute;
     right: 30px;
     gap: 50px;
     margin: 0;
     flex-direction: row;
-    
-   }
-   .navigate i{
+  }
+  .navigate i {
     font-size: 1rem;
-   }
-   .title-navbar{
+  }
+  .title-navbar {
     position: absolute;
     left: 5px;
     font-size: 0.6rem;
-   }
-  
+  }
 
-   .navigate p{
+  .navigate p {
     display: none;
-   }
+  }
 }
 
-@media (max-width: 440px){
- 
- .navigate{
-
-  gap: 20px;
-  
- }
-
-
+@media (max-width: 440px) {
+  .navigate {
+    gap: 20px;
+  }
 }
