@@ -4,4 +4,4 @@ PlayLearn é uma plataforma de jogos educacionais. O principal objetivo é engaj
 
 Projeto realizado na Faculdade de Engenharia da Computação.
 
-Acesse o site para saber mais: [www.playlearn.com](http://www.playlearn.com)
+Acesse o site para saber mais: [PlayLearn](https://vansaneduardo.github.io/PlayLearn/)
